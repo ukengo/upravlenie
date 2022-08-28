@@ -1,10 +1,7 @@
 {
   "name": "upravlenie",
   "version": "1.0.0",
-  "scripts": {
-    "start": "parcel public/index.html --open",
-    "build": "parcel build public/index.html"
-  },
+  "scripts": {},
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
