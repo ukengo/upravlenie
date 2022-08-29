@@ -1,13 +1,13 @@
 <div class="container" onkeypress="clickPressFinance(event)">
     <div class="row mt-4">
-        <h5>Finance</h5>
+        <h5>Фінанси</h5>
     </div>
 
     <div class="col-xl-10 radius p-4 form-background-color">
         <div class="row g-1 mt-1">
             <div class="col-md-2">
                 <div class="form">
-                    <label for="proektfin">Proekt</label>
+                    <label for="proektfin">Проект</label>
                     <input type="number" id="proektfin" list="proektfin-datalist" class="form-control form-control-sm form-font input-paste-finance" />
                     <datalist id="proektfin-datalist"></datalist>
                 </div>
@@ -15,14 +15,14 @@
 
             <div class="col-md-2">
                 <div class="form">
-                    <label for="summafin">Sum</label>
+                    <label for="summafin">Сума</label>
                     <input type="number" id="summafin" class="form-control form-control-sm" />
                 </div>
             </div>
 
             <div class="col-md-1">
                 <div class="form">
-                    <label for="priznakfin">Sign</label>
+                    <label for="priznakfin">Признак</label>
                     <input type="text" id="priznakfin" list="priznakfin-datalist" class="form-control form-control-sm" />
                     <datalist id="priznakfin-datalist"></datalist>
                 </div>
@@ -30,14 +30,14 @@
 
             <div class="col-md-2">
                 <div class="form">
-                    <label for="dateoplfin">Date of payment</label>
+                    <label for="dateoplfin">Дата оплати</label>
                     <input type="date" id="dateoplfin" class="form-control form-control-sm" />
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="form">
-                    <label for="sffin">Sf</label>
+                    <label for="sffin">Рф</label>
                     <input type="text" id="sffin" list="sffin-datalist" class="form-control form-control-sm" />
                     <datalist id="sffin-datalist"></datalist>
                 </div>
@@ -53,7 +53,7 @@
         <div class="row g-1 mt-1">
             <div class="col-md-6">
                 <div class="form">
-                    <label for="primfin">Notes</label>
+                    <label for="primfin">Примітки</label>
                     <input type="text" id="primfin" list="primfin-datalist" class="form-control form-control-sm" />
                     <datalist id="primfin-datalist"></datalist>
                 </div>
@@ -61,7 +61,7 @@
 
             <div class="col-md-6">
                 <div class="form">
-                    <label for="firmafin">Firm</label>
+                    <label for="firmafin">Фірма</label>
                     <input type="text" id="firmafin" list="firmafin-datalist" class="form-control form-control-sm" />
                     <datalist id="firmafin-datalist"></datalist>
                 </div>
@@ -71,21 +71,21 @@
             <div class="col-md-auto">
                 <div class="form-check">
                     <span class="check-style"></span>
-                    <label for="issuepartfinance" class="form-check-label">Partially displayed</label>
+                    <label for="issuepartfinance" class="form-check-label">Виставлено частково</label>
                     <input type="checkbox" id="issuepartfinance" class="form-check-input" value="part" />
                 </div>
             </div>
             <div class="col-md-auto">
                 <div class="form-check">
                     <span class="check-style"></span>
-                    <label for="issuecompletfinance" class="form-check-label">Exhibited in full</label>
+                    <label for="issuecompletfinance" class="form-check-label">Виставлено повністю</label>
                     <input type="checkbox" id="issuecompletfinance" class="form-check-input" value="complet" />
                 </div>
             </div>
             <div class="col-md-auto">
                 <div class="form-check">
                     <span class="check-style"></span>
-                    <label for="ispolufinance" class="form-check-label">Ispolu</label>
+                    <label for="ispolufinance" class="form-check-label">Викону</label>
                     <input type="checkbox" id="ispolufinance" class="form-check-input" value="ispolu" />
                 </div>
             </div>
@@ -181,7 +181,7 @@
 
 
                         <div class="form">
-                            <label for="summafinModal">Сумма</label>
+                            <label for="summafinModal">Сума</label>
                             <input type="number" id="summafinModal" class="form-control form-control-sm" />
                         </div>
 
@@ -194,14 +194,14 @@
 
 
                         <div class="form">
-                            <label for="dateoplfinModal">Дата оплаты</label>
+                            <label for="dateoplfinModal">Дата оплати</label>
                             <input type="date" id="dateoplfinModal" class="form-control form-control-sm" />
                         </div>
 
 
 
                         <div class="form">
-                            <label for="sffinModal">Сф</label>
+                            <label for="sffinModal">Рф</label>
                             <input type="text" id="sffinModal" list="sffin-datalist" class="form-control form-control-sm" />
                             <datalist id="sffin-datalist"></datalist>
                         </div>
@@ -209,7 +209,7 @@
 
 
                         <div class="form">
-                            <label for="primfinModal">Примечание</label>
+                            <label for="primfinModal">Примітки</label>
                             <input type="text" id="primfinModal" list="primfin-datalist" class="form-control form-control-sm" />
                             <datalist id="primfin-datalist"></datalist>
                         </div>
@@ -223,7 +223,7 @@
 
 
                         <div class="form">
-                            <label for="firmafinModal">Фирма</label>
+                            <label for="firmafinModal">Фірма</label>
                             <input type="text" id="firmafinModal" list="firmafin-datalist" class="form-control form-control-sm" />
                             <datalist id="firmafin-datalist"></datalist>
                         </div>
@@ -231,13 +231,13 @@
                         <div class="row g-1 mt-1 checkbox-finance">
                             <div class="col-md-auto">
                                 <div class="form-check">
-                                    <label for="issuepartfinance" class="form-check-label">Выставлено частично</label>
+                                    <label for="issuepartfinance" class="form-check-label">Виставлено частково</label>
                                     <input type="checkbox" id="issuepartfinanceMod" class="form-check-input" value="part" />
                                 </div>
                             </div>
                             <div class="col-md-auto">
                                 <div class="form-check">
-                                    <label for="issuecompletfinance" class="form-check-label">Выставлено полностью</label>
+                                    <label for="issuecompletfinance" class="form-check-label">Виставлено повністю</label>
                                     <input type="checkbox" id="issuecompletfinanceMod" class="form-check-input" value="complet" />
                                 </div>
                             </div>

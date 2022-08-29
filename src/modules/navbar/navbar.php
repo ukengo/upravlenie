@@ -34,22 +34,22 @@
 
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade" id="nav-newproekt" role="tabpanel" aria-labelledby="nav-newproekt-tab">
-        <?php include "modules/new_proekt/new_proekt.php" ?>
+        <?php require "modules/new_proekt/new_proekt.php" ?>
     </div>
     <div class="tab-pane fade" id="nav-arriwalwaste" role="tabpanel" aria-labelledby="nav-arriwalwaste-tab">
-        <?php require "2.php" ?>
+        <?php require "modules/arriwalwaste/arriwalwaste.php" ?>
     </div>
     <div class="tab-pane active" id="nav-buhgalter" role="tabpanel" aria-labelledby="nav-buhgalter-tab">
-        <?php echo "3" ?>
+        <?php require "modules/buhgalter/buhgalter.php" ?>
     </div>
 
     <div class="tab-pane fade" id="nav-fin" role="tabpanel" aria-labelledby="nav-fin-tab">
-        <?php include "modules/finance/finance.php"?>
+        <?php require "modules/finance/finance.php"?>
     </div>
     <div class="tab-pane fade" id="nav-reestr" role="tabpanel" aria-labelledby="nav-reestr-tab">
-        <?php echo "5" ?>
+        <?php require "modules/tableReestr/tableReestr.php" ?>
     </div>
     <div class="tab-pane fade" id="nav-job" role="tabpanel" aria-labelledby="nav-job-tab">
-        <?php echo "6" ?>
+    <?php require "modules/job/job.php"?>
     </div>
 </div>
