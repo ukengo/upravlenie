@@ -1,4 +1,4 @@
 /* import { buttonBuhExport } from "./buhgalter";
 buttonBuhExport(); */
-import buhgalterExport from "./buhgalter";
+import buhgalterExport from "./js/buhgalter.js";
 buhgalterExport();
