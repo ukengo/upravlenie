@@ -31,8 +31,7 @@
                     <div class="row">
                         <div class="d-sm-block">
                             <button class="btn btn-danger mb-2 mt-2" type="button" id="button_cashe_input">Ввод</button>
-                            <button class="btn btn-danger mb-2 mt-2" type="reset"
-                                id="button_cashe_reset">Очистить</button>
+                            <button class="btn btn-danger mb-2 mt-2" type="reset" id="button_cashe_reset">Очистить</button>
                         </div>
                     </div>
                 </form>

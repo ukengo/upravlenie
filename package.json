@@ -1,10 +1,17 @@
 {
   "name": "upravlenie",
   "version": "1.0.0",
-  "scripts": {},
+  "main": "main.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
   "keywords": [],
   "license": "ISC",
+  "dependencies": {
+    "webpack-cli": "^4.10.0"
+  },
   "devDependencies": {
-    "parcel": "^2.7.0"
+    "webpack": "^5.74.0"
   }
 }
