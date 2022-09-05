@@ -331,7 +331,7 @@ function tableReestrExport() {
     document.querySelector('#btnTable').addEventListener('click', () => {
         console.log('btnTable');
         $.ajax({
-            url: '../../server_processing.php',         /* Куда отправить запрос */
+            url: '../source/google_sheet_connect.php',         /* Куда отправить запрос */
             method: 'post',             /* Метод запроса (post или get) */
             dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
             data: { text: 'Текст' },     /* Данные передаваемые в массиве */

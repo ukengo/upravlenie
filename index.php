@@ -15,15 +15,11 @@
 
 
     <!-- dataTables -->
-   
-
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
     <!-- dataTables responsive-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
-
 
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -31,10 +27,8 @@
 <body>
 
     <?php
-    require "./source/php/navbar.php";
-    ?>
-    <?php
-    require "./source/php/modules_buhgalter/cashe/cashe.php";
+    require_once "./source/php/navbar.php";
+    require_once "./source/php/modules_buhgalter/cashe/cashe.php";
     ?>
 
 

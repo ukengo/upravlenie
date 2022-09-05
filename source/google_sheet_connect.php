@@ -29,7 +29,7 @@ $range = 'База';
 $response = $service->spreadsheets_values->get($spreadsheetId, $range);
 
 
-// var_dump($response['values'][0]);
+//var_dump($_POST);
 //print_r($response['values'][0]);
 /* print_r(json_encode($response['values'][0])); */
 echo (json_encode($response['values']));
