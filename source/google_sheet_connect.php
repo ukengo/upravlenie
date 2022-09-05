@@ -2,10 +2,11 @@
 <?php
 
 // Подключаем клиент Google таблиц
-require_once __DIR__ . '/vendor/autoload.php';
+
+require_once '../vendor/autoload.php';
 
 // Наш ключ доступа к сервисному аккаунту
-$googleAccountKeyFilePath = __DIR__ . '/settings/keys.json';
+$googleAccountKeyFilePath = '../settings/keys.json';
 putenv('GOOGLE_APPLICATION_CREDENTIALS=' . $googleAccountKeyFilePath);
 
 // Создаем новый клиент
