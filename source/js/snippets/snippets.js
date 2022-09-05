@@ -22,7 +22,7 @@ function labelred() {
 
 // перехват события вставки и обрезка пробелов в поле input[type="search"]
 $(document).ready(trimmingSpaces);
-function trimmingSpaces() {
+export function trimmingSpaces() {
     var lastKeyCode = 0;
     $('input[type="search"]').bind('keydown', function (e) {
         lastKeyCode = e.keyCode;
@@ -98,4 +98,13 @@ export function spinner(elemId) {
 export function hideBtnBuh() {
     searchMobileNot(() => $('#btnBuh').hide(1000)
     );
+}
+
+//обрабатывает клик и тап на таблице для возврата текста из ячейки
+export function clickTables(sel, fun) {
+    const el = document.querySelector(sel);
+    if (el) {
+        el.addEventListener("click", fun);
+        el.addEventListener('touchcancel', fun);
+    };
 }

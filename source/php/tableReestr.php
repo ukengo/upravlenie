@@ -186,11 +186,12 @@
     <br>
     <div class="row radius">
         <div class="row mt-4" id="div-data-table-row">
-            <!-- <div id="div-data-table">
+        
+            <div id="div-data-table">
         <table id="data-table" class="table table-striped table-sm table-hover table-bordered">
          TABLE DATA IS ADDED BY THE showData() JAVASCRIPT FUNCTION ABOVE 
         </table>
-    </div> -->
+    </div>
         </div>
     </div>
 </div>
