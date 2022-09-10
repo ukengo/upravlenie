@@ -328,10 +328,12 @@ function tableReestrExport() {
     // открытие полной таблицы проектов при загрузке окна (автооткрытие)
     //searchMobile(btnTable);
 
+   
+
     document.querySelector('#btnTable').addEventListener('click', () => {
         console.log('btnTable');
         $.ajax({
-            url: '../source/google_sheet_connect.php',         /* Куда отправить запрос */
+            url: '../../handler_server/reestr_datatable.php',         /* Куда отправить запрос */
             method: 'post',             /* Метод запроса (post или get) */
             dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
             data: { text: 'Текст' },     /* Данные передаваемые в массиве */

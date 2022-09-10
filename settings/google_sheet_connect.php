@@ -17,23 +17,28 @@ $client->useApplicationDefaultCredentials();
 // Добавляем область доступа к чтению, редактированию, созданию и удалению таблиц
 $client->addScope('https://www.googleapis.com/auth/spreadsheets');
 
-$service = new Google_Service_Sheets($client);
+//$service = new Google_Service_Sheets($client);
 
 // ID таблицы
-$spreadsheetId = '1ewk6ahWyREzSUe985l3zm_LblKpdjXs6rAHd71hXzwQ';
+//$spreadsheetId = '1ewk6ahWyREzSUe985l3zm_LblKpdjXs6rAHd71hXzwQ';
 
-$response = $service->spreadsheets->get($spreadsheetId);
+//$response = $service->spreadsheets->get($spreadsheetId);
 
  
-$range = 'База';
+//$range = 'База';
 
-$response = $service->spreadsheets_values->get($spreadsheetId, $range);
+//$response = $service->spreadsheets_values->get($spreadsheetId, $range);
+//echo (json_encode($response['values']));
+
+
+
+
 
 
 //var_dump($_POST);
 //print_r($response['values'][0]);
 /* print_r(json_encode($response['values'][0])); */
-echo (json_encode($response['values']));
+
 
 
 /* $query = $conn->query("SELECT count(id) FROM users");
