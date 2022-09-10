@@ -341,49 +341,49 @@ function tableReestrExport() {
 
 
 
-              
-                    // sessionStorage.setItem('DataLength', dataArray.length);//записываем в кеш длину
-                    let oTable = $('#data-table').DataTable({
-                        data: dataArrayMap,
-                        //CHANGE THE TABLE HEADINGS BELOW TO MATCH WITH YOUR SELECTED DATA RANGE
-                      /*   lengthMenu: [[25, 50, 100, 500, -1, 0], [25, 50, 100, 500, "Все", "Пусто"]],
-                        responsive: true,
-                        autoWidth: false,
-                        order: [[11, 'desc']], // колонка 10 это номера строк, по ним сортировка
-                        columnDefs: [
-                            {
-                                targets: [11],
-                                visible: false,
-                            }, // скрываем колонку номеров сттрок
-                        ], */
-                        columns: [
-                            { "title": "Дата конец" },
-                            { "title": "Дата начало" },
-                            { "title": "Фирма" },
-                            { "title": "Работа" },
-                            { "title": "Проект" },
-                            { "title": "Сотрудник" },
-                            { "title": "Исполнитель" },
-                            { "title": "Сумма исполу" },
-                            { "title": "Оплата исполу" },
-                            { "title": "Примечание" },
-                            { "title": "Примечание мое" },
-                            { "title": "Row" },
-                        ]
-                    });
-                  //  trimmingSpaces();
-                  //  clickTableReestr();
-/*                     document.querySelector('.dataTables_wrapper .dataTables_filter input').classList.add("form-control");
-                    document.querySelector('.dataTables_wrapper .dataTables_filter input').style =
-                        `border-radius: 20px;
-                width: 400px;
-                padding: 5px 14px`;
-                    document.querySelector('.dataTables_wrapper .dataTables_filter input').placeholder = 'Поиск по таблице';
-                    // считывваем из кеша данные для поиска и вставляем в поле поиска
-                    const valueSearch = sessionStorage.getItem('dataTables_filter_input');
-                    $('.dataTables_filter input').val(valueSearch);
-                    autoSearchOnOpen('.dataTables_filter input');
-                    // end */
+
+                // sessionStorage.setItem('DataLength', dataArray.length);//записываем в кеш длину
+                let oTable = $('#data-table').DataTable({
+                    data: dataArrayMap,
+                    //CHANGE THE TABLE HEADINGS BELOW TO MATCH WITH YOUR SELECTED DATA RANGE
+                    /*   lengthMenu: [[25, 50, 100, 500, -1, 0], [25, 50, 100, 500, "Все", "Пусто"]],
+                      responsive: true,
+                      autoWidth: false,
+                      order: [[11, 'desc']], // колонка 10 это номера строк, по ним сортировка
+                      columnDefs: [
+                          {
+                              targets: [11],
+                              visible: false,
+                          }, // скрываем колонку номеров сттрок
+                      ], */
+                    columns: [
+                        { "title": "Дата конец" },
+                        { "title": "Дата начало" },
+                        { "title": "Фирма" },
+                        { "title": "Работа" },
+                        { "title": "Проект" },
+                        { "title": "Сотрудник" },
+                        { "title": "Исполнитель" },
+                        { "title": "Сумма исполу" },
+                        { "title": "Оплата исполу" },
+                        { "title": "Примечание" },
+                        { "title": "Примечание мое" },
+                        { "title": "Row" },
+                    ]
+                });
+                //  trimmingSpaces();
+                //  clickTableReestr();
+                /*                     document.querySelector('.dataTables_wrapper .dataTables_filter input').classList.add("form-control");
+                                    document.querySelector('.dataTables_wrapper .dataTables_filter input').style =
+                                        `border-radius: 20px;
+                                width: 400px;
+                                padding: 5px 14px`;
+                                    document.querySelector('.dataTables_wrapper .dataTables_filter input').placeholder = 'Поиск по таблице';
+                                    // считывваем из кеша данные для поиска и вставляем в поле поиска
+                                    const valueSearch = sessionStorage.getItem('dataTables_filter_input');
+                                    $('.dataTables_filter input').val(valueSearch);
+                                    autoSearchOnOpen('.dataTables_filter input');
+                                    // end */
 
 
 
@@ -465,10 +465,10 @@ function tableReestrExport() {
     } */
 
     //возвращает текст из определенной колонки и номер колонки, записыает в кеш, потом вставляет из кеша
-/*     function clickTableReestr() {
-        clickTables('#data-table', clickTapHandling);
-    }
- */
+    /*     function clickTableReestr() {
+            clickTables('#data-table', clickTapHandling);
+        }
+     */
     //обработка клика или тапа по таблице 
     /*   function clickTapHandling(event) {
           if (event.target.tagName !== 'TD') return false;
