@@ -108,3 +108,8 @@ export function clickTables(sel, fun) {
         el.addEventListener('touchcancel', fun);
     };
 }
+
+// эмуляция отпускания кнопки, при щелчке поиск по таблице (автопоиск при открытии)
+export function autoSearchOnOpen(selektor) {
+    $(selektor).triggerHandler('keyup');
+}

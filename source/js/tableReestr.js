@@ -1,4 +1,6 @@
-import { trimmingSpaces, clickTables } from './snippets/snippets.js'
+import { trimmingSpaces, clickTables, spinner, autoSearchOnOpen } from './snippets/snippets.js'
+import { dataTableReestr } from './ajax.js'
+
 
 function tableReestrExport() {
 
@@ -308,56 +310,39 @@ function tableReestrExport() {
             }
         } */
 
-    // открытие полной таблицы проекта
-    /*     function btnTable() {
-            if ($('.dataTables_filter input').length) { // проверка на наличие селектора
-                const valueSearch = $('.dataTables_filter input').val(); // данные в поле поиска
-                sessionStorage.setItem('dataTables_filter_input', valueSearch); //записываем данные поля поиска в кеш
-            };
-    
-            $('#div-data-table').remove();
-            $('#btnTable').prop("disabled", true);
-            $('<div id="div-data-table-spinner"></div><div id="div-data-table"><div style="overflow-x:auto;"><table id="data-table" class="table table-striped table-sm table-hover table-bordered table-datatable table-line-selection "></table></div></div>').appendTo('#div-data-table-row')
-            $("#div-data-table-spinner").attr("tabindex", -1).focus();
-            spinner('div-data-table-spinner')
-            google.script.run.withSuccessHandler(showData).getData();
-    
-            //tableLineSelection() //полосы в таблице
-        } */
 
-    // открытие полной таблицы проектов при загрузке окна (автооткрытие)
-    //searchMobile(btnTable);
+    function btnTable() {
+        if ($('.dataTables_filter input').length) { // проверка на наличие селектора
+            const valueSearch = $('.dataTables_filter input').val(); // данные в поле поиска
+            sessionStorage.setItem('dataTables_filter_input', valueSearch); //записываем данные поля поиска в кеш
+        };
+        $('#div-data-table').remove();
+        $('#btnTable').prop("disabled", true);
+        $('<div id="div-data-table-spinner"></div><div id="div-data-table"><div style="overflow-x:auto;"><table id="data-table" class="table table-striped table-sm table-hover table-bordered table-datatable table-line-selection "></table></div></div>').appendTo('#div-data-table-row')
+        $("#div-data-table-spinner").attr("tabindex", -1).focus();
+        spinner('div-data-table-spinner');
+        showData();
+    }
 
-   
+    function showData() {
 
-    document.querySelector('#btnTable').addEventListener('click', () => {
-        console.log('btnTable');
-        $.ajax({
-            url: '../../handler_server/reestr_datatable.php',         /* Куда отправить запрос */
-            method: 'post',             /* Метод запроса (post или get) */
-            dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-            data: { text: 'Текст' },     /* Данные передаваемые в массиве */
-            success: function (dataArray) {   /* функция которая будет выполнена после успешного запроса.  */
-                const dataArrayMap = dataArray.map(x => [x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10], x[11]])
-                console.log(dataArrayMap); /* В переменной data содержится ответ от index.php. */
-
-
-
-
-                // sessionStorage.setItem('DataLength', dataArray.length);//записываем в кеш длину
-                let oTable = $('#data-table').DataTable({
+        dataTableReestr()
+            .then((dataArray) => {
+                const dataArrayMap = dataArray.filter(x => x[5] != '').map(x => [x[0], x[1], x[2], x[3], x[5], x[6], x[15], x[16], x[17], x[21], x[20], x[25]]);
+                dataArrayMap.shift();
+                sessionStorage.setItem('DataLength', dataArray.length);//записываем в кеш длину
+                $('#data-table').DataTable({
                     data: dataArrayMap,
-                    //CHANGE THE TABLE HEADINGS BELOW TO MATCH WITH YOUR SELECTED DATA RANGE
-                    /*   lengthMenu: [[25, 50, 100, 500, -1, 0], [25, 50, 100, 500, "Все", "Пусто"]],
-                      responsive: true,
-                      autoWidth: false,
-                      order: [[11, 'desc']], // колонка 10 это номера строк, по ним сортировка
-                      columnDefs: [
-                          {
-                              targets: [11],
-                              visible: false,
-                          }, // скрываем колонку номеров сттрок
-                      ], */
+                    lengthMenu: [[25, 50, 100, 500, -1, 0], [25, 50, 100, 500, "Все", "Пусто"]],
+                    responsive: true,
+                    autoWidth: false,
+                    order: [[11, 'desc']], // колонка 10 это номера строк, по ним сортировка
+                    columnDefs: [
+                        {
+                            targets: [11],
+                            visible: false,
+                        }, // скрываем колонку номеров сттрок
+                    ],
                     columns: [
                         { "title": "Дата конец" },
                         { "title": "Дата начало" },
@@ -373,30 +358,26 @@ function tableReestrExport() {
                         { "title": "Row" },
                     ]
                 });
-                //  trimmingSpaces();
-                //  clickTableReestr();
-                /*                     document.querySelector('.dataTables_wrapper .dataTables_filter input').classList.add("form-control");
-                                    document.querySelector('.dataTables_wrapper .dataTables_filter input').style =
-                                        `border-radius: 20px;
+                trimmingSpaces();
+                clickTableReestr();
+                document.querySelector('.dataTables_wrapper .dataTables_filter input').classList.add("form-control");
+                document.querySelector('.dataTables_wrapper .dataTables_filter input').style =
+                    `border-radius: 20px;
                                 width: 400px;
                                 padding: 5px 14px`;
-                                    document.querySelector('.dataTables_wrapper .dataTables_filter input').placeholder = 'Поиск по таблице';
-                                    // считывваем из кеша данные для поиска и вставляем в поле поиска
-                                    const valueSearch = sessionStorage.getItem('dataTables_filter_input');
-                                    $('.dataTables_filter input').val(valueSearch);
-                                    autoSearchOnOpen('.dataTables_filter input');
-                                    // end */
-
-
-
-            }
-        });
-    })
-
-
-
-
-
+                document.querySelector('.dataTables_wrapper .dataTables_filter input').placeholder = 'Поиск по таблице';
+                // считывваем из кеша данные для поиска и вставляем в поле поиска
+                const valueSearch = sessionStorage.getItem('dataTables_filter_input');
+                $('.dataTables_filter input').val(valueSearch);
+                autoSearchOnOpen('.dataTables_filter input');
+                // end 
+                $("#div-data-table-spinner").remove()
+                $('#btnTable').prop("disabled", false);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 
 
 
@@ -425,15 +406,13 @@ function tableReestrExport() {
 
 
 
-    //  $.ajax({
-    //     url: '../../server_processing.php',         /* Куда отправить запрос */
-    //     method: 'post',             /* Метод запроса (post или get) */
-    //     dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-    //     data: { text: 'Текст' },     /* Данные передаваемые в массиве */
-    //     success: function (data) {   /* функция которая будет выполнена после успешного запроса.  */
-    //         // console.log([...data]); /* В переменной data содержится ответ от index.php. */
-    //     }
-    // }); 
+
+
+
+
+
+
+
 
 
 
@@ -467,64 +446,63 @@ function tableReestrExport() {
     } */
 
     //возвращает текст из определенной колонки и номер колонки, записыает в кеш, потом вставляет из кеша
-    /*     function clickTableReestr() {
-            clickTables('#data-table', clickTapHandling);
-        }
-     */
+    function clickTableReestr() {
+        clickTables('#data-table', clickTapHandling);
+    }
+
     //обработка клика или тапа по таблице 
-    /*   function clickTapHandling(event) {
-          if (event.target.tagName !== 'TD') return false;
-          const dataTarget = event.target.textContent;
-          const data = [...event.target.parentNode.children];
-          const text = getDataFromTd(data);
-          const col = event.srcElement._DT_CellIndex.column;
-          ClearRecordReestr();
-          switch (col) {
-              case 0:
-                  $('#dateendreestr').val(formatDateYYYYtireMMtireDD(strongToDate(text[0])));
-                  break;
-              case 1:
-                  $('#datestartreestr').val(formatDateYYYYtireMMtireDD(strongToDate(text[1])));
-                  break;
-              case 2:
-                  $('#firmareestr').val(text[2]);
-                  break;
-              case 3:
-                  $('#rabotareestr').val(text[3]);
-                  break;
-              case 4:
-                  $('#proektreestr').val(text[4]);
-                  break;
-              case 5:
-                  $('#sotrreestr').val(text[5]);
-                  break;
-              case 6:
-                  $('#ispolreestr').val(text[6]);
-                  break;
-              case 7:
-                  $('#sumispolreestr').val(strongToNumber(text[7]));
-                  break;
-              case 8:
-                  $('#sumoplatareestr').val(strongToNumber(text[8]));
-                  break;
-              case 9:
-                  $('#primreestr').val(text[9]);
-                  break;
-              case 10:
-                  $('#primmoyoreestr').val(text[10]);
-                  break;
-          }
-          labelred();
-          sessionStorage.setItem('proekt', text[4]);
-          // вставка значения из кеша на кнопку и в поле поиска таблицы
-          document.getElementById('btnSearchReestrInfo').innerHTML = event.target.innerHTML;
-          document.getElementById('btnSearchFinInfo').innerHTML = 'fin ' + text[4];
-          document.getElementById('btnSearchFinPlus').innerHTML = 'fin+';
-          document.getElementById('btnSearchFinMinus').innerHTML = 'fin-';
-          document.getElementById('btnSearchJobInfo').innerHTML = 'job ' + text[4];
-          document.querySelector('#data-table_filter input').value = event.target.innerHTML;
-      };
-   */
+    function clickTapHandling(event) {
+        if (event.target.tagName !== 'TD') return false;
+        const dataTarget = event.target.textContent;
+        const data = [...event.target.parentNode.children];
+        const text = getDataFromTd(data);
+        const col = event.srcElement._DT_CellIndex.column;
+        ClearRecordReestr();
+        switch (col) {
+            case 0:
+                $('#dateendreestr').val(formatDateYYYYtireMMtireDD(strongToDate(text[0])));
+                break;
+            case 1:
+                $('#datestartreestr').val(formatDateYYYYtireMMtireDD(strongToDate(text[1])));
+                break;
+            case 2:
+                $('#firmareestr').val(text[2]);
+                break;
+            case 3:
+                $('#rabotareestr').val(text[3]);
+                break;
+            case 4:
+                $('#proektreestr').val(text[4]);
+                break;
+            case 5:
+                $('#sotrreestr').val(text[5]);
+                break;
+            case 6:
+                $('#ispolreestr').val(text[6]);
+                break;
+            case 7:
+                $('#sumispolreestr').val(strongToNumber(text[7]));
+                break;
+            case 8:
+                $('#sumoplatareestr').val(strongToNumber(text[8]));
+                break;
+            case 9:
+                $('#primreestr').val(text[9]);
+                break;
+            case 10:
+                $('#primmoyoreestr').val(text[10]);
+                break;
+        }
+        labelred();
+        sessionStorage.setItem('proekt', text[4]);
+        // вставка значения из кеша на кнопку и в поле поиска таблицы
+        document.getElementById('btnSearchReestrInfo').innerHTML = event.target.innerHTML;
+        document.getElementById('btnSearchFinInfo').innerHTML = 'fin ' + text[4];
+        document.getElementById('btnSearchFinPlus').innerHTML = 'fin+';
+        document.getElementById('btnSearchFinMinus').innerHTML = 'fin-';
+        document.getElementById('btnSearchJobInfo').innerHTML = 'job ' + text[4];
+        document.querySelector('#data-table_filter input').value = event.target.innerHTML;
+    };
     // разворачиваем коллапс при старте с настольного
     /* function collap() {
     $('#accordingButonReestr')[0].click();
@@ -533,7 +511,7 @@ function tableReestrExport() {
 
     //обработка кнопок
     // открытие полной таблицы проекта по клику на кнопку
-    /*  $('#btnTable').click(btnTable) */
+    $('#btnTable').click(btnTable);
 
     //кнопка маленькая левая (reestr)
     /*     $('#btnSearchReestrInfo').click(function () {

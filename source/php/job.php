@@ -70,7 +70,7 @@
                     <button type="button" class="btn btn-primary btn-danger" id="btnSearchJob">Search</button>
                     <button type="button" class="btn btn-primary btn-danger" id="btnClearSearchJob">Clear</button>
                 </div>
-                <button type="button" class="btn btn-primary btn-danger" id="btnAddRecord" >Add Record</button>
+                <button type="button" class="btn btn-primary btn-danger" id="btnAddRecord">Add Record</button>
                 <button type="button" class="btn btn-primary btn-danger" onclick="ClearRecordjob()">Clear Record</button>
                 <button type="reset" class="btn btn-primary btn-danger">Clear Record</button>
                 <div class="btn my-1" role="group" aria-label="Basic example">
@@ -102,3 +102,4 @@
     <div class="container">
         <div class="row" id="div-data-tablejob-row"></div>
     </div>
+</div>
