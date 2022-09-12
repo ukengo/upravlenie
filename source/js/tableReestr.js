@@ -1,8 +1,65 @@
-import { trimmingSpaces, clickTables, spinner, autoSearchOnOpen } from './snippets/snippets.js'
+import { trimmingSpaces, clickTables, spinner, autoSearchOnOpen, getDataFromTd, labelred, getDropDownArray, afterDropDownReturned } from './snippets/snippets.js'
 import { dataTableReestr } from './ajax.js'
 
-
 function tableReestrExport() {
+
+
+    //таблица Управление - Фирмы
+
+    dataTableReestr()
+        .then((dataArray) => {
+            afterDropDownReturned(getDropDownArray(dataArray
+                .slice(1)
+                .filter(x => x[5] != '')
+                .map(x => [x[2]])),
+                'firmareestr-datalist'
+                );
+            afterDropDownReturned(getDropDownArray(dataArray
+                .slice(1)
+                .filter(x => x[5] != '')
+                .map(x => [x[3]])),
+                'rabotareestr-datalist'
+                );
+            afterDropDownReturned(getDropDownArray(dataArray
+                .slice(1)
+                .filter(x => x[5] != '')
+                .map(x => [x[4]])),
+                'coderabotareestr-datalist'
+                );
+            afterDropDownReturned(getDropDownArray(dataArray
+                .slice(1)
+                .filter(x => x[5] != '')
+                .map(x => [x[5]])),
+                'proektreestr-datalist'
+                );
+            afterDropDownReturned(getDropDownArray(dataArray
+                .slice(1)
+                .filter(x => x[5] != '')
+                .map(x => [x[6]])),
+                'sotrreestr-datalist'
+                );
+            afterDropDownReturned(getDropDownArray(dataArray
+                .slice(1)
+                .filter(x => x[5] != '')
+                .map(x => [x[15]])),
+                'ispolreestr-datalist'
+                );
+            afterDropDownReturned(getDropDownArray(dataArray
+                .slice(1)
+                .filter(x => x[5] != '')
+                .map(x => [x[21]])),
+                'primreestr-datalist'
+                );
+            afterDropDownReturned(getDropDownArray(dataArray
+                .slice(1)
+                .filter(x => x[5] != '')
+                .map(x => [x[20]])),
+                'primmoyoreestr-datalist'
+                );
+        });
+        
+
+
 
     /* function startTableReestrClear() {
         $("#firmareestr-datalist").empty();
@@ -15,48 +72,8 @@ function tableReestrExport() {
         $("#primmoyoreestr-datalist").empty();
     } */
 
-    /*     function startTableReestr() {
-            startTableReestrClear()
-    
-            google.script.run.withSuccessHandler((arrayOfArrays) => {
-                afterDropDownReturned(arrayOfArrays, 'firmareestr-datalist')
-            }).getDropDownArrayFirma()
-    
-    
-            google.script.run.withSuccessHandler((arrayOfArrays) => {
-                afterDropDownReturned(arrayOfArrays, 'rabotareestr-datalist')
-            }).getDropDownArrayRabota()
-    
-    
-            google.script.run.withSuccessHandler((arrayOfArrays) => {
-                afterDropDownReturned(arrayOfArrays, 'coderabotareestr-datalist')
-            }).getDropDownArrayCodeRabota()
-    
-    
-            google.script.run.withSuccessHandler((arrayOfArrays) => {
-                afterDropDownReturned(arrayOfArrays, 'proektreestr-datalist')
-            }).getDropDownArrayProekt()
-    
-    
-            google.script.run.withSuccessHandler((arrayOfArrays) => {
-                afterDropDownReturned(arrayOfArrays, 'sotrreestr-datalist')
-            }).getDropDownArraySotr()
-    
-    
-            google.script.run.withSuccessHandler((arrayOfArrays) => {
-                afterDropDownReturned(arrayOfArrays, 'ispolreestr-datalist')
-            }).getDropDownArrayIspol()
-    
-    
-            google.script.run.withSuccessHandler((arrayOfArrays) => {
-                afterDropDownReturned(arrayOfArrays, 'primreestr-datalist')
-            }).getDropDownArrayPrim()
-    
-    
-            google.script.run.withSuccessHandler((arrayOfArrays) => {
-                afterDropDownReturned(arrayOfArrays, 'primmoyoreestr-datalist')
-            }).getDropDownArrayPrimMoyoReestr()
-        } */
+
+
 
     // cрабатывание по кнопке Enter
     /*     function clickPressReestrSearch(event) {
@@ -237,25 +254,10 @@ function tableReestrExport() {
             }).searchRecordsReestrGs(dateendReestr, datestartReestr, firmaReestr, rabotaReestr, coderabotaReestr, proektReestr, sotrReestr, ispolReestr, sumispolReestr, sumoplataReestr, primReestr, primMoyoReestr, issuepartReestr, withoutaccountReestr, stoppedReestr, checkDateReestr);
         } */
 
-    /*     function ClearRecordReestr() {
-            document.getElementById("dateendreestr").value = '';
-            document.getElementById("datestartreestr").value = '';
-            document.getElementById("firmareestr").value = '';
-            document.getElementById("rabotareestr").value = '';
-            document.getElementById("coderabotareestr").value = '';
-            document.getElementById("proektreestr").value = '';
-            document.getElementById("sotrreestr").value = '';
-            document.getElementById("ispolreestr").value = '';
-            document.getElementById("sumispolreestr").value = '';
-            document.getElementById("sumoplatareestr").value = '';
-            document.getElementById("primreestr").value = '';
-            document.getElementById("primmoyoreestr").value = '';
-            document.getElementById("issuepartreestr").checked = false;
-            document.getElementById("withoutaccountreestr").checked = false;
-            document.getElementById("stoppedreestr").checked = false;
-            document.getElementById("check-date-reestr").value = '';
-            labelred();
-        } */
+    function ClearRecordReestr() {
+        document.querySelector('#reestr_ofo').reset();
+        labelred();
+    }
 
     /*     function UpdateRecordReestr(row_number_reestr) {
             document.getElementById("update_button_reestr" + row_number_reestr).disabled = true;
@@ -311,6 +313,7 @@ function tableReestrExport() {
         } */
 
 
+    // нажатие кнопки Table
     function btnTable() {
         if ($('.dataTables_filter input').length) { // проверка на наличие селектора
             const valueSearch = $('.dataTables_filter input').val(); // данные в поле поиска
@@ -325,7 +328,6 @@ function tableReestrExport() {
     }
 
     function showData() {
-
         dataTableReestr()
             .then((dataArray) => {
                 const dataArrayMap = dataArray.filter(x => x[5] != '').map(x => [x[0], x[1], x[2], x[3], x[5], x[6], x[15], x[16], x[17], x[21], x[20], x[25]]);
@@ -378,44 +380,6 @@ function tableReestrExport() {
                 console.log(error)
             })
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /* function showDataReestr(dataArray){
@@ -510,6 +474,10 @@ function tableReestrExport() {
     searchMobile(collap); */
 
     //обработка кнопок
+
+    // кнопка Clear Records
+    document.querySelector('#btn-clear-records').addEventListener('click', ClearRecordReestr);
+
     // открытие полной таблицы проекта по клику на кнопку
     $('#btnTable').click(btnTable);
 

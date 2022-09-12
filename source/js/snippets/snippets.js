@@ -1,7 +1,6 @@
 // подсветка инпута при наличии данных при щелчке любом (шрифт лабела)
 document.querySelector("body").addEventListener("input", labelred);
-
-function labelred() {
+export function labelred() {
     const nodes = document.querySelectorAll('.form-background-color input, .form-background-color select');
     const values = Array.from(nodes).map(inputElement => inputElement.value);
     const noRed = Array.from($('.checkbox-finance .form-check-label'));
@@ -112,4 +111,33 @@ export function clickTables(sel, fun) {
 // эмуляция отпускания кнопки, при щелчке поиск по таблице (автопоиск при открытии)
 export function autoSearchOnOpen(selektor) {
     $(selektor).triggerHandler('keyup');
+}
+
+// достаем текст из набора TD
+export function getDataFromTd(tdArr) {
+    return tdArr.map(item => item.textContent);
+}
+
+/////////////////////////////////////////////////////////////////////
+// Выбор для формирования выпадающих списков
+// Общая функция
+/**
+flagNonUnique - это флаг, отвечающий за не уникальность. Если он true, то берется массив всех данных. Если он пропущен, то берется массив только уникальных данных.
+*/
+export function getDropDownArray(data, flagNonUnique) {
+    let arr = data.filter(String).flat();
+    const result = flagNonUnique ? arr : [...new Set(arr)];
+    return result;
+}
+// Конец общей функции
+
+
+export function afterDropDownReturned(arrayOfArrays, datalist) {
+    let selectorDatalist = document.getElementById(datalist);
+    selectorDatalist.innerHTML = null;
+    arrayOfArrays.forEach((r) => {
+        const selectorOption = document.createElement('option');
+        selectorOption.textContent = r;
+        selectorDatalist.appendChild(selectorOption)
+    });
 }

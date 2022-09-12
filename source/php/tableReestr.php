@@ -10,128 +10,130 @@
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushReestr">
                 <!-- начало вместилище аккордеона -->
                 <div class="accordion-body radius">
-                    <div class="row g-1 mt-1 form-background-color" onkeypress="clickPressReestrSearch(event)">
-                        <div class="col-auto">
-                            <div class="form form-reestr">
-                                <label for="dateendreestr">Дата кінець</label>
-                                <input type="date" id="dateendreestr" class="form-control form-control-sm" />
+                    <form id='reestr_ofo'>
+                        <div class="row g-1 mt-1 form-background-color" onkeypress="clickPressReestrSearch(event)">
+                            <div class="col-auto">
+                                <div class="form form-reestr">
+                                    <label for="dateendreestr">Дата кінець</label>
+                                    <input type="date" id="dateendreestr" class="form-control form-control-sm" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-auto">
-                            <div class="form form-reestr">
-                                <label for="check-date-reestr">
-                                    &#60;&#62;
-                                </label>
-                                <select class="form-control form-control-sm" id="check-date-reestr">
-                                    <option></option>
-                                    <option>&#60;</option>
-                                    <option>&#62;</option>
-                                </select>
+                            <div class="col-auto">
+                                <div class="form form-reestr">
+                                    <label for="check-date-reestr">
+                                        &#60;&#62;
+                                    </label>
+                                    <select class="form-control form-control-sm" id="check-date-reestr">
+                                        <option></option>
+                                        <option>&#60;</option>
+                                        <option>&#62;</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-auto">
-                            <div class="form">
-                                <label for="datestartreestr">Дата початок</label>
-                                <input type="date" id="datestartreestr" class="form-control form-control-sm" />
+                            <div class="col-auto">
+                                <div class="form">
+                                    <label for="datestartreestr">Дата початок</label>
+                                    <input type="date" id="datestartreestr" class="form-control form-control-sm" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form">
-                                <label for="firmareestr">Фірма</label>
-                                <input type="text" list="firmareestr-datalist" id="firmareestr" class="form-control form-control-sm" />
-                                <datalist id="firmareestr-datalist"></datalist>
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <label for="firmareestr">Фірма</label>
+                                    <input type="text" list="firmareestr-datalist" id="firmareestr" class="form-control form-control-sm" />
+                                    <datalist id="firmareestr-datalist"></datalist>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form">
-                                <label for="rabotareestr">Робота</label>
-                                <input type="text" list="rabotareestr-datalist" id="rabotareestr" class="form-control form-control-sm" />
-                                <datalist id="rabotareestr-datalist"></datalist>
+                            <div class="col-md-2">
+                                <div class="form">
+                                    <label for="rabotareestr">Робота</label>
+                                    <input type="text" list="rabotareestr-datalist" id="rabotareestr" class="form-control form-control-sm" />
+                                    <datalist id="rabotareestr-datalist"></datalist>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-1">
-                            <div class="form">
-                                <label for="coderabotareestr">Код раб</label>
-                                <input type="text" id="coderabotareestr" list="coderabotareestr-datalist" class="form-control form-control-sm" />
-                                <datalist id="coderabotareestr-datalist"></datalist>
+                            <div class="col-md-1">
+                                <div class="form">
+                                    <label for="coderabotareestr">Код раб</label>
+                                    <input type="text" id="coderabotareestr" list="coderabotareestr-datalist" class="form-control form-control-sm" />
+                                    <datalist id="coderabotareestr-datalist"></datalist>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form">
-                                <label for="proektreestr">Проект</label>
-                                <input type="number" id="proektreestr" list="proektreestr-datalist" class="form-control form-control-sm form-font input-paste-reestr" />
-                                <datalist id="proektreestr-datalist"></datalist>
+                            <div class="col-md-2">
+                                <div class="form">
+                                    <label for="proektreestr">Проект</label>
+                                    <input type="number" id="proektreestr" list="proektreestr-datalist" class="form-control form-control-sm form-font input-paste-reestr" />
+                                    <datalist id="proektreestr-datalist"></datalist>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-auto">
-                            <div class="form">
-                                <label for="sotrreestr">Співробітник</label>
-                                <input type="text" id="sotrreestr" list="sotrreestr-datalist" class="form-control form-control-sm " />
-                                <datalist id="sotrreestr-datalist"></datalist>
+                            <div class="col-auto">
+                                <div class="form">
+                                    <label for="sotrreestr">Співробітник</label>
+                                    <input type="text" id="sotrreestr" list="sotrreestr-datalist" class="form-control form-control-sm " />
+                                    <datalist id="sotrreestr-datalist"></datalist>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-auto">
-                            <div class="form">
-                                <label for="ispolreestr">Виконавець</label>
-                                <input type="text" id="ispolreestr" list="ispolreestr-datalist" class="form-control form-control-sm " />
-                                <datalist id="ispolreestr-datalist"></datalist>
+                            <div class="col-auto">
+                                <div class="form">
+                                    <label for="ispolreestr">Виконавець</label>
+                                    <input type="text" id="ispolreestr" list="ispolreestr-datalist" class="form-control form-control-sm " />
+                                    <datalist id="ispolreestr-datalist"></datalist>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form">
-                                <label for="sumispolreestr">Сумма викону</label>
-                                <input type="number" id="sumispolreestr" class="form-control form-control-sm " />
+                            <div class="col-md-2">
+                                <div class="form">
+                                    <label for="sumispolreestr">Сумма викону</label>
+                                    <input type="number" id="sumispolreestr" class="form-control form-control-sm " />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form">
-                                <label for="sumoplatareestr">Оплата викону</label>
-                                <input type="number" id="sumoplatareestr" class="form-control form-control-sm " />
+                            <div class="col-md-2">
+                                <div class="form">
+                                    <label for="sumoplatareestr">Оплата викону</label>
+                                    <input type="number" id="sumoplatareestr" class="form-control form-control-sm " />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form">
-                                <label for="primreestr">Примітки до проекту</label>
-                                <input type="text" id="primreestr" list="primreestr-datalist" class="form-control form-control-sm" />
-                                <datalist id="primreestr-datalist"></datalist>
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <label for="primreestr">Примітки до проекту</label>
+                                    <input type="text" id="primreestr" list="primreestr-datalist" class="form-control form-control-sm" />
+                                    <datalist id="primreestr-datalist"></datalist>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="form">
-                                <label for="primmoyoreestr">Примітки мої</label>
-                                <input type="text" id="primmoyoreestr" list="primmoyoreestr-datalist" class="form-control form-control-sm " />
-                                <datalist id="primmoyoreestr-datalist"></datalist>
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <label for="primmoyoreestr">Примітки мої</label>
+                                    <input type="text" id="primmoyoreestr" list="primmoyoreestr-datalist" class="form-control form-control-sm " />
+                                    <datalist id="primmoyoreestr-datalist"></datalist>
+                                </div>
+                            </div>
+                            <div class="form col-auto">
+                                <label for="largestproektreestr">Largest project:</label>
+                                <div id="largestproektreestr"></div>
                             </div>
                         </div>
-                        <div class="form col-auto">
-                            <label for="largestproektreestr">Largest project:</label>
-                            <div id="largestproektreestr"></div>
-                        </div>
-                    </div>
-                    <div class="row g-1 mt-1">
-                        <div class="col-auto">
-                            <div class="form-check">
-                                <span class="check-style"></span>
-                                <label for="issuepartreestr" class="form-check-label">Виставлено частково</label>
-                                <input type="checkbox" id="issuepartreestr" class="form-check-input" />
+                        <div class="row g-1 mt-1">
+                            <div class="col-auto">
+                                <div class="form-check">
+                                    <span class="check-style"></span>
+                                    <label for="issuepartreestr" class="form-check-label">Виставлено частково</label>
+                                    <input type="checkbox" id="issuepartreestr" class="form-check-input" />
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-check">
+                                    <span class="check-style"></span>
+                                    <label for="withoutaccountreestr" class="form-check-label">Без рахунка</label>
+                                    <input type="checkbox" id="withoutaccountreestr" class="form-check-input " />
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-check">
+                                    <span class="check-style"></span>
+                                    <label for="stoppedreestr" class="form-check-label">Зупинено</label>
+                                    <input type="checkbox" id="stoppedreestr" class="form-check-input " />
+                                </div>
                             </div>
                         </div>
-                        <div class="col-auto">
-                            <div class="form-check">
-                                <span class="check-style"></span>
-                                <label for="withoutaccountreestr" class="form-check-label">Без рахунка</label>
-                                <input type="checkbox" id="withoutaccountreestr" class="form-check-input " />
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <div class="form-check">
-                                <span class="check-style"></span>
-                                <label for="stoppedreestr" class="form-check-label">Зупинено</label>
-                                <input type="checkbox" id="stoppedreestr" class="form-check-input " />
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <!-- конец вместилище аккордеона -->
             </div>
@@ -142,10 +144,11 @@
 
             <div class="btn-group my-1" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary btn-danger" id="btnSearchReestr">Search</button>
-                <button type="button" class="btn btn-primary btn-danger" onclick="ClearRecordReestr()">Clear Records</button>
+                <button type="button" class="btn btn-primary btn-danger" id='btn-clear-records'>Clear Records</button>
             </div>
             <button type="button" class="btn btn-danger" id="btnClearSearchReestr">Clear</button>
             <button type="button" class="btn btn-danger" onclick="startTableReestr()">Up Record</button>
+
             <!-- <input type="button" value="Table" class="btn btn-danger" id="btnTable" /> -->
             <div class="btn-group my-1" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary btn-danger" id="btnTable">Table</button>
@@ -186,7 +189,7 @@
     <br>
     <div class="row radius">
         <div class="row mt-4" id="div-data-table-row">
-    </div>
         </div>
     </div>
+</div>
 </div>
