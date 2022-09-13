@@ -141,3 +141,18 @@ export function afterDropDownReturned(arrayOfArrays, datalist) {
         selectorDatalist.appendChild(selectorOption)
     });
 }
+
+// остановка скриипта, если не выбраны критерии поиска в инпутах
+function searchStop(dataArr) {
+    let evalRows = [];
+    dataArr.forEach(elem => {
+        if (elem === '' || elem === false) {
+            evalRows.push('no')
+        } else {
+            evalRows.push('yes')
+        }
+    })
+    if (evalRows.indexOf('yes') === -1) {
+        return true
+    }
+}

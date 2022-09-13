@@ -1,11 +1,11 @@
 import { trimmingSpaces, clickTables, spinner, autoSearchOnOpen, getDataFromTd, labelred, getDropDownArray, afterDropDownReturned } from './snippets/snippets.js'
-import { dataTableReestr } from './ajax.js'
+import { dataTableReestr, dataTableReestr22 } from './ajax.js'
 
 function tableReestrExport() {
-
-
-    //таблица Управление - Фирмы
-
+document.querySelector("#btnClearSearchReestr").addEventListener('click', dataTableReestr22);
+ //   dataTableReestr22()
+    //выпадающие списки начало
+    /////////////////////////////////////////////
     dataTableReestr()
         .then((dataArray) => {
             afterDropDownReturned(getDropDownArray(dataArray
@@ -57,7 +57,8 @@ function tableReestrExport() {
                 'primmoyoreestr-datalist'
                 );
         });
-        
+    ////////////////////////////////////////////////////////////////
+        //выпадающие списки конец    
 
 
 
@@ -515,9 +516,9 @@ function tableReestrExport() {
 
     // перехват кнопки (reestr с переходом)
     /*     $('.btn-reestr-transition').click(function () {
-            console.log('textContent');
+            
             const textContent = numEndStrong(this.textContent);
-            console.log(textContent);
+            
             ClearRecordReestr();
             $('#proektreestr').val(textContent);
             $('#data-table_filter input').val(textContent);
