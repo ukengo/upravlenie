@@ -39,7 +39,7 @@
                             <div class="col-md-4">
                                 <div class="form">
                                     <label for="firmareestr">Фірма</label>
-                                    <input type="text" list="firmareestr-datalist" id="firmareestr" class="form-control form-control-sm" name="firmareestr"/>
+                                    <input type="text" list="firmareestr-datalist" id="firmareestr" class="form-control form-control-sm" name="firmareestr" />
                                     <datalist id="firmareestr-datalist"></datalist>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                                 <div class="form-check">
                                     <span class="check-style"></span>
                                     <label for="stoppedreestr" class="form-check-label">Зупинено</label>
-                                    <input type="checkbox" id="stoppedreestr" class="form-check-input" name="stoppedreestr" >
+                                    <input type="checkbox" id="stoppedreestr" class="form-check-input" name="stoppedreestr">
                                 </div>
                             </div>
                         </div>
@@ -191,5 +191,4 @@
         <div class="row mt-4" id="div-data-table-row">
         </div>
     </div>
-</div>
 </div>

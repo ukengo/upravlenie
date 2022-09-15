@@ -18,7 +18,11 @@ export const dataTableReestr = () => {
 
 
 export const dataTableReestr22 = () => {
+    // const form = document.querySelector('#reestr_ofo');
+    //   console.log(serialize(form));
+
     console.log($('#reestr_ofo').serialize());
+
     return new Promise((resolve, reject) => {
 
         $.ajax({
@@ -39,4 +43,19 @@ export const dataTableReestr22 = () => {
             },
         });
     });
+}
+
+
+
+
+
+function getQuerys(data) {
+    let queryDict = {};
+    data. substring(1).split('&').forEach(element => {
+        let param = element.split('=');
+        queryDict[param[0]] = param[1];
+        
+    });
+
+    return (queryDict);
 }
