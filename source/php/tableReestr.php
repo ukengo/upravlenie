@@ -192,3 +192,10 @@
         </div>
     </div>
 </div>
+
+<?php 
+//require_once $_SERVER['DOCUMENT_ROOT'] . 'handler_server/reestr_datatable.php';
+
+//echo 25;
+//echo (json_encode($response['values']));
+?>
