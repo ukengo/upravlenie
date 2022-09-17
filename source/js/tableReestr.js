@@ -8,12 +8,12 @@ document.querySelector("#btnClearSearchReestr").addEventListener('click', dataTa
     /////////////////////////////////////////////
     dataTableReestr()
         .then((dataArray) => {
-            afterDropDownReturned(getDropDownArray(dataArray
+        /*     afterDropDownReturned(getDropDownArray(dataArray
                 .slice(1)
                 .filter(x => x[5] != '')
                 .map(x => [x[2]])),
                 'firmareestr-datalist'
-                );
+                ); */
             afterDropDownReturned(getDropDownArray(dataArray
                 .slice(1)
                 .filter(x => x[5] != '')

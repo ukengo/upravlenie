@@ -40,7 +40,11 @@
                                 <div class="form">
                                     <label for="firmareestr">Фірма</label>
                                     <input type="text" list="firmareestr-datalist" id="firmareestr" class="form-control form-control-sm" name="firmareestr" />
-                                    <datalist id="firmareestr-datalist"></datalist>
+
+                                    
+                                    
+
+
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -192,10 +196,3 @@
         </div>
     </div>
 </div>
-
-<?php 
-//require_once $_SERVER['DOCUMENT_ROOT'] . 'handler_server/reestr_datatable.php';
-
-//echo 25;
-//echo (json_encode($response['values']));
-?>
