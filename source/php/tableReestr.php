@@ -1,3 +1,7 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/functions.php';
+?>
+
 <div class="container container-one">
     <h5>Таблиця Реестр оформлень</h5>
 
@@ -39,47 +43,67 @@
                             <div class="col-md-4">
                                 <div class="form">
                                     <label for="firmareestr">Фірма</label>
-                                    <input type="text" list="firmareestr-datalist" id="firmareestr" class="form-control form-control-sm" name="firmareestr" />
-
-                                    
-                                    
-
-
+                                    <input type="text" list="firmareestr-datalist" id="firmareestr" class="form-control form-control-sm" name="firmareestr">
+                                    <datalist id="firmareestr-datalist">
+                                        <?php foreach (dropDownlist($response, '2') as $value) { ?>
+                                            <option value="<?php echo ($value)  ?>"></option>
+                                        <?php } ?>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form">
                                     <label for="rabotareestr">Робота</label>
                                     <input type="text" list="rabotareestr-datalist" id="rabotareestr" class="form-control form-control-sm" name="rabotareestr">
-                                    <datalist id="rabotareestr-datalist"></datalist>
+                                    <datalist id="rabotareestr-datalist">
+                                    <?php foreach (dropDownlist($response, '3') as $value) { ?>
+                                            <option value="<?php echo ($value)  ?>"></option>
+                                        <?php } ?>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="col-md-1">
                                 <div class="form">
                                     <label for="coderabotareestr">Код раб</label>
                                     <input type="text" id="coderabotareestr" list="coderabotareestr-datalist" class="form-control form-control-sm" name="coderabotareestr">
-                                    <datalist id="coderabotareestr-datalist"></datalist>
+                                    <datalist id="coderabotareestr-datalist">
+                                    <?php foreach (dropDownlist($response, '4') as $value) { ?>
+                                            <option value="<?php echo ($value)  ?>"></option>
+                                        <?php } ?>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form">
                                     <label for="proektreestr">Проект</label>
                                     <input type="number" id="proektreestr" list="proektreestr-datalist" class="form-control form-control-sm form-font input-paste-reestr" name="proektreestr">
-                                    <datalist id="proektreestr-datalist"></datalist>
+                                    <datalist id="proektreestr-datalist">
+                                    <?php foreach (dropDownlist($response, '5') as $value) { ?>
+                                            <option value="<?php echo ($value)  ?>"></option>
+                                        <?php } ?>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="col-auto">
                                 <div class="form">
                                     <label for="sotrreestr">Співробітник</label>
                                     <input type="text" id="sotrreestr" list="sotrreestr-datalist" class="form-control form-control-sm" name="sotrreestr">
-                                    <datalist id="sotrreestr-datalist"></datalist>
+                                    <datalist id="sotrreestr-datalist">
+                                    <?php foreach (dropDownlist($response, '6') as $value) { ?>
+                                            <option value="<?php echo ($value)  ?>"></option>
+                                        <?php } ?>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="col-auto">
                                 <div class="form">
                                     <label for="ispolreestr">Виконавець</label>
                                     <input type="text" id="ispolreestr" list="ispolreestr-datalist" class="form-control form-control-sm " name="ispolreestr">
-                                    <datalist id="ispolreestr-datalist"></datalist>
+                                    <datalist id="ispolreestr-datalist">
+                                    <?php foreach (dropDownlist($response, '15') as $value) { ?>
+                                            <option value="<?php echo ($value)  ?>"></option>
+                                        <?php } ?>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -98,7 +122,11 @@
                                 <div class="form">
                                     <label for="primreestr">Примітки до проекту</label>
                                     <input type="text" id="primreestr" list="primreestr-datalist" class="form-control form-control-sm" name="primreestr">
-                                    <datalist id="primreestr-datalist"></datalist>
+                                    <datalist id="primreestr-datalist">
+                                    <?php foreach (dropDownlist($response, '21') as $value) { ?>
+                                            <option value="<?php echo ($value)  ?>"></option>
+                                        <?php } ?>
+                                    </datalist>
                                 </div>
                             </div>
 
@@ -106,7 +134,11 @@
                                 <div class="form">
                                     <label for="primmoyoreestr">Примітки мої</label>
                                     <input type="text" id="primmoyoreestr" list="primmoyoreestr-datalist" class="form-control form-control-sm" name="primmoyoreestr">
-                                    <datalist id="primmoyoreestr-datalist"></datalist>
+                                    <datalist id="primmoyoreestr-datalist">
+                                    <?php foreach (dropDownlist($response, '20') as $value) { ?>
+                                            <option value="<?php echo ($value)  ?>"></option>
+                                        <?php } ?>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="form col-auto">
@@ -136,7 +168,9 @@
                                     <input type="checkbox" id="stoppedreestr" class="form-check-input" name="stoppedreestr">
                                 </div>
                             </div>
+                            <input type="hidden" name="action" value="1">
                         </div>
+
                     </form>
                 </div>
                 <!-- конец вместилище аккордеона -->

@@ -1,64 +1,7 @@
 import { trimmingSpaces, clickTables, spinner, autoSearchOnOpen, getDataFromTd, labelred, getDropDownArray, afterDropDownReturned } from './snippets/snippets.js'
-import { dataTableReestr, dataTableReestr22 } from './ajax.js'
+import { dataTableReestr, } from './ajax.js'
 
 function tableReestrExport() {
-document.querySelector("#btnClearSearchReestr").addEventListener('click', dataTableReestr22);
- //   dataTableReestr22()
-    //выпадающие списки начало
-    /////////////////////////////////////////////
-    dataTableReestr()
-        .then((dataArray) => {
-        /*     afterDropDownReturned(getDropDownArray(dataArray
-                .slice(1)
-                .filter(x => x[5] != '')
-                .map(x => [x[2]])),
-                'firmareestr-datalist'
-                ); */
-            afterDropDownReturned(getDropDownArray(dataArray
-                .slice(1)
-                .filter(x => x[5] != '')
-                .map(x => [x[3]])),
-                'rabotareestr-datalist'
-                );
-            afterDropDownReturned(getDropDownArray(dataArray
-                .slice(1)
-                .filter(x => x[5] != '')
-                .map(x => [x[4]])),
-                'coderabotareestr-datalist'
-                );
-            afterDropDownReturned(getDropDownArray(dataArray
-                .slice(1)
-                .filter(x => x[5] != '')
-                .map(x => [x[5]])),
-                'proektreestr-datalist'
-                );
-            afterDropDownReturned(getDropDownArray(dataArray
-                .slice(1)
-                .filter(x => x[5] != '')
-                .map(x => [x[6]])),
-                'sotrreestr-datalist'
-                );
-            afterDropDownReturned(getDropDownArray(dataArray
-                .slice(1)
-                .filter(x => x[5] != '')
-                .map(x => [x[15]])),
-                'ispolreestr-datalist'
-                );
-            afterDropDownReturned(getDropDownArray(dataArray
-                .slice(1)
-                .filter(x => x[5] != '')
-                .map(x => [x[21]])),
-                'primreestr-datalist'
-                );
-            afterDropDownReturned(getDropDownArray(dataArray
-                .slice(1)
-                .filter(x => x[5] != '')
-                .map(x => [x[20]])),
-                'primmoyoreestr-datalist'
-                );
-        });
-    ////////////////////////////////////////////////////////////////
-        //выпадающие списки конец    
 
 
 

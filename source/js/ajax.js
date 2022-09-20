@@ -5,7 +5,7 @@ export const dataTableReestr = () => {
             url: '../../handler_server/reestr_datatable.php',         /* Куда отправить запрос */
             method: 'post',             /* Метод запроса (post или get) */
             dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-            data: { text: 'Текст' },     /* Данные передаваемые в массиве */
+            data: { action: 'full_table_base' },     /* Данные передаваемые в массиве */
             success: function (data) { /* функция которая будет выполнена после успешного запроса.  */
                 resolve(data)
             },
@@ -17,45 +17,44 @@ export const dataTableReestr = () => {
 }
 
 
-export const dataTableReestr22 = () => {
-    // const form = document.querySelector('#reestr_ofo');
-    //   console.log(serialize(form));
+/* $(document).ready(function () {
+    $('#btnClearSearchReestr').on('click', fGo); //событие на клик кнопки
+}); */
 
-  //  console.log($('#reestr_ofo').serialize());
+/* function fGo(event) {
+    event.preventDefault(); //отключаем стандартную реакцию браузера
+    console.log($('#reestr_ofo').serialize()); //в консоли смотрим внешний вид строки
+    $.post(
+        "../source/js/1.php", // куда отправляем запрос
+        $('#reestr_ofo').serialize(), // сама строка
+        ifSuccess // функция которая обрабатывает ответ сервера
+    );
+} */
 
-    return new Promise((resolve, reject) => {
 
-        $.ajax({
-            url: '../../handler_server/1.php',         /* Куда отправить запрос */
-            method: 'post',             /* Метод запроса (post или get) */
-            dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
-            data: $("#reestr_ofo").serialize(),     /* Данные передаваемые в массиве */
-            success: function (data) { /* функция которая будет выполнена после успешного запроса.  */
-             //   console.log(`1 - ${data}`);
-              //  console.log(resolve(`2 - ${data}`));
+/* function fGo(event) {
+    event.preventDefault(); //отключаем стандартную реакцию браузера
+    console.log($('#reestr_ofo').serialize()); //в консоли смотрим внешний вид строки
+    dataTableReestrTest = ('../source/js/1.php', 'json', $('#reestr_ofo').serialize());
+    );
+} */
 
-              //  resolve(console.log(`3 - ${data}`));
-
-                resolve(`4 - ${data}`)
-            },
-            error: function (error) {
-                reject(error)
-            },
-        });
-    });
-}
+/* function ifSuccess(data) {
+    console.log(data); // ответ выводим в консоль
+} */
 
 
 
 
 
-function getQuerys(data) {
+
+/* function getQuerys(data) {
     let queryDict = {};
-    data. substring(1).split('&').forEach(element => {
+    data.substring(1).split('&').forEach(element => {
         let param = element.split('=');
         queryDict[param[0]] = param[1];
-        
+
     });
 
     return (queryDict);
-}
+} */
