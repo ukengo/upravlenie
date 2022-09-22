@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/modules_table_reestr/functions_reestr.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/modules_table_reestr/func_autolosd_reestr.php';
 ?>
 
 <div class="container container-one">

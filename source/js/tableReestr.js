@@ -1,5 +1,5 @@
 import { trimmingSpaces, clickTables, spinner, autoSearchOnOpen, getDataFromTd, labelred, getDropDownArray, afterDropDownReturned } from './snippets/snippets.js'
-import { dataTableReestr, } from './ajax.js'
+import { dataTableReestr, sendAjaxForm } from './ajax.js'
 
 function tableReestrExport() {
 
@@ -31,7 +31,19 @@ function tableReestrExport() {
             }
         } */
 
-    /*     function SearchRecordsReestr() {
+        function SearchRecordsReestr() {
+            sendAjaxForm('../../handler_server/reestr_datatable.php', 'reestr_ofo', 'json');
+        } 
+        
+        
+            
+       
+/* 
+
+
+
+
+
             const dateendReestr = document.getElementById("dateendreestr").value;
             const datestartReestr = document.getElementById("datestartreestr").value;
             const firmaReestr = document.getElementById("firmareestr").value;
@@ -417,7 +429,7 @@ function tableReestrExport() {
     }
     searchMobile(collap); */
 
-    //обработка кнопок
+    //обработка кнопок ///////////////////////////////////////////
 
     // кнопка Clear Records
     document.querySelector('#btn-clear-records').addEventListener('click', ClearRecordReestr);
@@ -480,10 +492,10 @@ function tableReestrExport() {
       autoSearchOnOpen('#searchFinance');
     }) */
 
-    /*     $('#btnSearchReestr').click(function () {
-            $('#btnSearchReestr').prop("disabled", true);
-            SearchRecordsReestr();
-        }); */
+    $('#btnSearchReestr').click(function () {
+       // $('#btnSearchReestr').prop("disabled", true);
+        SearchRecordsReestr();
+    });
 
     /*     $('#btnClearSearchReestr').click(function () {
             $('#btnClearSearchReestr').prop("disabled", true);
@@ -519,7 +531,8 @@ function tableReestrExport() {
             };
         };
     
-        accordingButon(); */
+        accordingButon(); 
 }
-
+*/
+}
 export default tableReestrExport;

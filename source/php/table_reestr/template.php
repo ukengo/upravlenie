@@ -152,7 +152,7 @@
                 <input type="checkbox" id="stoppedreestr" class="form-check-input" name="stoppedreestr">
             </div>
         </div>
-        <input type="hidden" name="action" value="1">
+        <input type="hidden" name="action" value="table_reestr">
     </div>
 
 </form>

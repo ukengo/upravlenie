@@ -2,6 +2,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "settings/google_sheet_connect.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "settings/tables.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "source/php/table_reestr/functions_reestr.php";
 
 $service = new Google_Service_Sheets($client);
 
@@ -17,5 +18,10 @@ if (isset($_POST['action'])) {
         case 'full_table_base':
             echo (json_encode($response['values']));
             break;
+        case 'table_reestr':
+            SearchRecordsReestrPhp($response['values']);
+            break;
     }
 }
+
+?>

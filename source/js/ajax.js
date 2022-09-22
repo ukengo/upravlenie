@@ -1,4 +1,4 @@
-//Запрос данных вся таблица Реест оформлений База
+//Запрос данных вся таблица Реестр оформлений База
 export const dataTableReestr = () => {
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -16,6 +16,17 @@ export const dataTableReestr = () => {
     });
 }
 
+export const sendAjaxForm = (url, formId, dataType) => {
+    $.ajax({
+        url: url, //url страницы (action_ajax_form.php)
+        type: "POST", //метод отправки
+        dataType: dataType, //формат данных
+        data: $("#" + formId).serialize(),  // Сеарилизуем объект
+        success: function (data) {
+            console.log(data);            
+        }
+    });
+}
 
 /* $(document).ready(function () {
     $('#btnClearSearchReestr').on('click', fGo); //событие на клик кнопки
