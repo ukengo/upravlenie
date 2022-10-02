@@ -27,6 +27,7 @@
 <body>
 
     <?php
+    error_reporting(-1);
     require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/navbar.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/modules_buhgalter/cashe/cashe.php';
     ?>

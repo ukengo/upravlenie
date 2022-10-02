@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/modules_table_reestr/func_autolosd_reestr.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/table_reestr/func_autoload_reestr.php';
 ?>
 
 <div class="container container-one">
@@ -14,8 +14,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/modules_table_reestr/func_a
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushReestr">
                 <!-- начало вместилище аккордеона -->
                 <div class="accordion-body radius">
-                    <?php 
-                    require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/modules_table_reestr/template.php';
+                    <?php
+                    require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/table_reestr/template_reestr.php';
                     ?>
                 </div>
                 <!-- конец вместилище аккордеона -->
@@ -29,7 +29,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/modules_table_reestr/func_a
                 <button type="button" class="btn btn-primary btn-danger" id="btnSearchReestr">Search</button>
                 <button type="button" class="btn btn-primary btn-danger" id='btn-clear-records'>Clear Records</button>
             </div>
-            <button type="button" class="btn btn-danger" id="btnClearSearchReestr">Clear</button>
+            <button type="button" class="btn btn-danger" id="btnCloseSearchReestr">Close</button>
             <button type="button" class="btn btn-danger" onclick="startTableReestr()">Up Record</button>
 
             <!-- <input type="button" value="Table" class="btn btn-danger" id="btnTable" /> -->

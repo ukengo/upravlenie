@@ -31,184 +31,29 @@ function tableReestrExport() {
             }
         } */
 
-        function SearchRecordsReestr() {
-            sendAjaxForm('../../handler_server/reestr_datatable.php', 'reestr_ofo', 'json');
-        } 
-        
-        
-            
-       
-/* 
+    //отбор значений по критерию и вставка в результаты поиска
+    async function SearchRecordsReestr() {
+        spinner('rowdatareestr');
+        const searchRecord = await sendAjaxForm('../../handler_server/reestr_datatable.php', 'reestr_ofo', 'json');
+        if (searchRecord === 'false' ) {
+            document.querySelector('#rowdatareestr').innerHTML = searchRecord;
+        } else {
+            document.querySelector('#rowdatareestr').innerHTML = '';
+            alert('Не введены данные');
+        }
+        $('#btnSearchReestr').prop("disabled", false);
+    }
+    //////////// конец отбора /////////////////////
 
 
 
 
 
-            const dateendReestr = document.getElementById("dateendreestr").value;
-            const datestartReestr = document.getElementById("datestartreestr").value;
-            const firmaReestr = document.getElementById("firmareestr").value;
-            const rabotaReestr = document.getElementById("rabotareestr").value;
-            const coderabotaReestr = document.getElementById("coderabotareestr").value;
-            const proektReestr = document.getElementById("proektreestr").value;
-            const sotrReestr = document.getElementById("sotrreestr").value;
-            const ispolReestr = document.getElementById("ispolreestr").value;
-            const sumispolReestr = document.getElementById("sumispolreestr").value;
-            const sumoplataReestr = document.getElementById("sumoplatareestr").value;
-            const primReestr = document.getElementById("primreestr").value;
-            const primMoyoReestr = document.getElementById("primmoyoreestr").value;
-            const issuepartReestr = document.getElementById("issuepartreestr").checked;
-            const withoutaccountReestr = document.getElementById("withoutaccountreestr").checked;
-            const stoppedReestr = document.getElementById("stoppedreestr").checked;
-            const checkDateReestr = document.getElementById("check-date-reestr").value;
-    
-    
-            // остановка скриипта, если не выбраны критерии поиска в инпутах
-            const dataArr =
-                [
-                    dateendReestr, datestartReestr, firmaReestr, rabotaReestr, coderabotaReestr, proektReestr, sotrReestr, ispolReestr, sumispolReestr, sumoplataReestr, primReestr, primMoyoReestr, issuepartReestr, withoutaccountReestr, stoppedReestr
-                ]
-    
-            if (searchStop(dataArr)) {
-                alert('Не введены данные')
-                $('#btnSearchReestr').prop("disabled", false);
-                return;
-            }
-    
-            var row_number_reestr = 0;
-            let count = 0; // счетчик для подсчета количества остановленных при выборке
-            spinner('rowdatareestr')
-            google.script.run.withSuccessHandler(function (ar) {
-                var displayTableReestr = '<form>';
-                displayTableReestr += '<table onkeypress=\"clickPressReestrUpdate(event)\" class=\"table table-bordered border-danger mb-2 mt-2\" id=\"mainTableReestr\" >';
-                displayTableReestr += "<tr>";
-                displayTableReestr += "<th></th>";
-                displayTableReestr += "<th></th>";
-                displayTableReestr += "<th></th>";
-                displayTableReestr += "<th></th>";
-                displayTableReestr += "</tr>";
-    
-                ar.forEach(function (item, index) {
-    
-                    displayTableReestr += "<tr id=\"ROWNUMBER:" + row_number_reestr + "\" >";
-    
-                    displayTableReestr += "<td colspan=\"9\">"
-                    displayTableReestr += "<div class=\"row g-1 mt-1\">"
-    
-                    displayTableReestr += "<div class=\"col-auto\">"
-                    displayTableReestr += "<label for=\"up_dateendreestr\">Дата конец</label>  ";
-                    displayTableReestr += "<input type=\"date\" id=\"up_dateendreestr" + row_number_reestr + "\" value=\"" + item[0] + "\" class=\"form-control form-control-sm\" /></div> ";
-    
-                    displayTableReestr += "<div class=\"col-auto\">"
-                    displayTableReestr += "<label for=\"up_datestartreestr\">Дата начало</label> ";
-                    displayTableReestr += "<input type=\"date\" id=\"up_datestartreestr" + row_number_reestr + "\" value=\"" + item[1] + "\" class=\"form-control form-control-sm\" />"
-                    displayTableReestr += "</div>";
-    
-                    displayTableReestr += "<div class=\"col-md-5\">"
-                    displayTableReestr += "<label for=\"up_firmareestr\">Фирма</label> ";
-                    displayTableReestr += "<input type=\"text\" list=\"firmareestr-datalist\" id=\"up_firmareestr" + row_number_reestr + "\" value=\"" + item[2] + "\" class=\"form-control form-control-sm\" /> <datalist id=\"firmareestr-datalist\"></datalist></div>";
-    
-                    displayTableReestr += "<div class=\"col-md-2\">"
-                    displayTableReestr += "<label for=\"up_rabotareestr\">Работа</label> ";
-                    displayTableReestr += "<input type=\"text\" list=\"rabotareestr-datalist\" id=\"up_rabotareestr" + row_number_reestr + "\" value=\"" + item[3] + "\" class=\"form-control form-control-sm\" /><datalist id=\"rabotareestr-datalist\"></datalist></div>";
-    
-                    displayTableReestr += "<div class=\"col-md-1\">"
-                    displayTableReestr += "<label for=\"up_coderabotareestr\">Код раб</label> ";
-                    displayTableReestr += "<input type=\"text\" id=\"up_coderabotareestr" + row_number_reestr + "\" value=\"" + item[4] + "\" class=\"form-control form-control-sm\" /></div>";
-    
-                    displayTableReestr += "<div class=\"col-md-2\">"
-                    displayTableReestr += "<label for=\"up_proektreestr\">Проект</label> ";
-                    displayTableReestr += "<input type=\"number\" id=\"up_proektreestr" + row_number_reestr + "\" value=\"" + item[5] + "\" class=\"form-control form-control-sm form-font\" /></div>";
-    
-    
-                    displayTableReestr += "<div class=\"col-auto\">"
-                    displayTableReestr += "<label for=\"up_sotrreestr\">Сотрудник</label> ";
-                    displayTableReestr += "<input type=\"text\" list=\"sotrreestr-datalist\" id=\"up_sotrreestr" + row_number_reestr + "\" value=\"" + item[6] + "\" class=\"form-control form-control-sm\" /></div>";
-    
-                    displayTableReestr += "<div class=\"col-auto\">"
-                    displayTableReestr += "<label for=\"up_ispolreestr\">Исполнитель</label> ";
-                    displayTableReestr += "<input type=\"text\" list=\"ispolreestr-datalist\"  id=\"up_ispolreestr" + row_number_reestr + "\" value=\"" + item[7] + "\" class=\"form-control form-control-sm\" /></div>";
-    
-                    displayTableReestr += "<div class=\"col-md-2\">"
-    
-                    displayTableReestr += "<label for=\"up_sumispolreestr\">Сумма исполнителю</label> ";
-                    displayTableReestr += "<input type=\"number\" id=\"up_sumispolreestr" + row_number_reestr + "\" value=\"" + item[8] + "\" class=\"form-control form-control-sm\" /></div>";
-    
-                    displayTableReestr += "<div class=\"col-md-2\">"
-    
-                    displayTableReestr += "<label for=\"up_sumoplatareestr\">Оплата исполнителю</label> ";
-                    displayTableReestr += "<input type=\"number\" id=\"up_sumoplatareestr" + row_number_reestr + "\" value=\"" + item[9] + "\" class=\"form-control form-control-sm\" /></div>";
-    
-                    displayTableReestr += "<div class=\"col-md-4\">"
-    
-                    displayTableReestr += "<label for=\"up_primreestr\">Примечание к проекту</label> ";
-                    displayTableReestr += "<input type=\"text\" list=\"primreestr-datalist\" id=\"up_primreestr" + row_number_reestr + "\" value=\"" + item[10] + "\" class=\"form-control form-control-sm\" /><datalist id=\"primreestr-datalist\"></datalist></div>";
-    
-                    displayTableReestr += "<div class=\"col-md-4\">"
-                    displayTableReestr += "<label for=\"up_primmoyoreestr\">Примечание мое</label> ";
-                    displayTableReestr += "<input type=\"text\" list=\"primmoyoreestr-datalist\"  id=\"up_primmoyoreestr" + row_number_reestr + "\" value=\"" + item[11] + "\" class=\"form-control form-control-sm\" /><datalist id=\"primmoyoreestr-datalist\"></datalist></div></div>";
-    
-                    displayTableReestr += `
-            <div class="row g-1 mt-1">
-              <div class="col-auto">
-                <div class="form-check">
-                  <span class="check-style"></span>
-                  <label class="form-check-label" for="up_issuepartreestr${row_number_reestr}">Выставлено частично</label> 
-                  <input type="checkbox" id="up_issuepartreestr${row_number_reestr}" class="form-check-input"${check1(item[12])}/>
-                  
-                </div>
-              </div>
-              <div class="col-auto">
-                <div class="form-check">
-                  <span class="check-style"></span>
-                  <label class="form-check-label" for="up_withoutaccountreestr${row_number_reestr}">Без счета</label> 
-                  <input type="checkbox" id="up_withoutaccountreestr${row_number_reestr}" class="form-check-input"${check1(item[13])}/>
-                </div>
-              </div>
-              <div class="col-auto">
-                <div class="form-check">
-                  <span class="check-style"></span>
-                  <label class="form-check-label" for="up_stoppedreestr${row_number_reestr}">Остановлено</label> 
-                  <input type="checkbox" id="up_stoppedreestr${row_number_reestr}" class="form-check-input"${check1(item[14])}/>
-                </div>
-              </div>
-            </div>
-          `;
-    
-                    displayTableReestr += "<div id=\"rowdatafin1" + row_number_reestr + "\"></div>"
-    
-                    displayTableReestr += "<td><div class=\"d-grid gap-2\"> ";
-    
-                    displayTableReestr += "<input type=\"button\" id=\"update_button_reestr" + row_number_reestr + "\" value=\"Update\" class=\"btn btn-danger\" ";
-                    displayTableReestr += "onclick=\"UpdateRecordReestr(" + row_number_reestr + ")\" /> ";
-    
-                    displayTableReestr += "<input type=\"button\" id=\"finance_button_reestr" + row_number_reestr + "\" value=\"Finance\" class=\"btn btn-danger\" ";
-                    displayTableReestr += "onclick=\"FinanceRecordReestr(" + row_number_reestr + ")\" />";
-    
-                    displayTableReestr += "<input type=\"button\" id=\"finance_button_reestr_close" + row_number_reestr + "\" value=\"FinClose\" class=\"btn btn-danger\" ";
-                    displayTableReestr += "onclick=\"FinanceRecordReestrClose(" + row_number_reestr + ")\" /></div> ";
-    
-           
-    
-    
-                    displayTableReestr += "</td>";
-                    displayTableReestr += "</tr>";
-                    row_number_reestr++;
-    
-                    // считаем количество остановленных
-                    if (item[14]) {
-                        count++
-                    }
-    
-                });
-    
-                displayTableReestr += '</table></form>'
-                document.getElementById("rowdatareestr").innerHTML = displayTableReestr;
-                document.querySelector("#mainTableReestr th").innerHTML = `${row_number_reestr - count} - закрытых, ${count} - остановленных. Всего: ${row_number_reestr}`;
-                // $("#rowdatareestr").attr("tabindex",-1).focus();
-                // startTableReestr()
-                $('#btnSearchReestr').prop("disabled", false);
-            }).searchRecordsReestrGs(dateendReestr, datestartReestr, firmaReestr, rabotaReestr, coderabotaReestr, proektReestr, sotrReestr, ispolReestr, sumispolReestr, sumoplataReestr, primReestr, primMoyoReestr, issuepartReestr, withoutaccountReestr, stoppedReestr, checkDateReestr);
-        } */
+
+
+
+
+
 
     function ClearRecordReestr() {
         document.querySelector('#reestr_ofo').reset();
@@ -493,15 +338,15 @@ function tableReestrExport() {
     }) */
 
     $('#btnSearchReestr').click(function () {
-       // $('#btnSearchReestr').prop("disabled", true);
+        $('#btnSearchReestr').prop("disabled", true);
         SearchRecordsReestr();
     });
 
-    /*     $('#btnClearSearchReestr').click(function () {
-            $('#btnClearSearchReestr').prop("disabled", true);
-            $('#rowdatareestr').html('');
-            $('#btnClearSearchReestr').prop("disabled", false);
-        }); */
+    $('#btnCloseSearchReestr').click(function () {
+        $('#btnCloseSearchReestr').prop("disabled", true);
+        $('#rowdatareestr').html('');
+        $('#btnCloseSearchReestr').prop("disabled", false);
+    });
 
     /*      $('#btnTable2').click(function () {
             $('#div-data-table').remove();
@@ -519,20 +364,19 @@ function tableReestrExport() {
             document.getElementById('btnSearchFinInfo').innerHTML = '';
             document.getElementById('btnSearchJobInfo').innerHTML = '';
             $('#clearBtnTable').prop("disabled", false);
-        })  */
+        })  
+}*/
 
     // кнопка аккордеона
-    /*     $('#accordingButonReestr').click(accordingButon);
-        function accordingButon() {
-            if ($('#accordingButonReestr').attr('class') == 'accordion-button collapsed') {
-                $('#accordingButonReestr').text('Развернуть форму');
-            } else {
-                $('#accordingButonReestr').text('Cвренуть форму');
-            };
+    $('#accordingButonReestr').click(accordingButon);
+    function accordingButon() {
+        if ($('#accordingButonReestr').attr('class') == 'accordion-button collapsed') {
+            $('#accordingButonReestr').text('Развернуть форму');
+        } else {
+            $('#accordingButonReestr').text('Cвернуть форму');
         };
-    
-        accordingButon(); 
-}
-*/
+    };
+
+    accordingButon();
 }
 export default tableReestrExport;

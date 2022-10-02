@@ -32,8 +32,7 @@
     //   spinner('results');
     //   hideBtnBuh(); // включение выпадающего окна со стрелкой на мобильном
     const temp = document.querySelector('#cashe_forma');
-    console.log(temp);
-    
+        
     const clon = temp.content.cloneNode(true);
     const result = document.querySelector('#results');
     if (result.firstChild) {

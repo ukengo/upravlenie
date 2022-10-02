@@ -7,24 +7,30 @@ export const dataTableReestr = () => {
             dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
             data: { action: 'full_table_base' },     /* Данные передаваемые в массиве */
             success: function (data) { /* функция которая будет выполнена после успешного запроса.  */
-                resolve(data)
+                resolve(data);
             },
             error: function (error) {
-                reject(error)
+                reject(error);
             },
         });
     });
 }
 
 export const sendAjaxForm = (url, formId, dataType) => {
-    $.ajax({
-        url: url, //url страницы (action_ajax_form.php)
-        type: "POST", //метод отправки
-        dataType: dataType, //формат данных
-        data: $("#" + formId).serialize(),  // Сеарилизуем объект
-        success: function (data) {
-            console.log(data);            
-        }
+    
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: url, //url страницы (action_ajax_form.php)
+            type: "POST", //метод отправки
+          //  dataType: dataType, //формат данных
+            data: $("#" + formId).serialize(),  // Сеарилизуем объект
+            success: function (data) {
+                resolve(data);
+            },
+            error: function (error) {
+                reject(error);
+            },
+        });
     });
 }
 

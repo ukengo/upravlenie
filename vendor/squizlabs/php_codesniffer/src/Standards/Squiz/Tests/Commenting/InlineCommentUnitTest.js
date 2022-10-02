@@ -119,8 +119,8 @@ console.info(foo);
 console.info(foo);
 
 //**
-* invalid comment
-*/
+/*invalid comment*/
+
 
 // some comment without capital or full stop
 console.log(foo); // An unrelated comment.

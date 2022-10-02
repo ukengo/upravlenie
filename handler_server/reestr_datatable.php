@@ -10,8 +10,6 @@ $service = new Google_Service_Sheets($client);
 // таблица Управлеие лист База
 $response = $service->spreadsheets_values->get($IdReestr, $rangeReestrBase);
 
-//echo ($response['values']);
-
 if (isset($_POST['action'])) {
     $action = trim($_POST['action']);
     switch ($action) {
@@ -19,7 +17,7 @@ if (isset($_POST['action'])) {
             echo (json_encode($response['values']));
             break;
         case 'table_reestr':
-            SearchRecordsReestrPhp($response['values']);
+            echo (SearchRecordsReestrPhp(($response['values']), $_POST));
             break;
     }
 }
