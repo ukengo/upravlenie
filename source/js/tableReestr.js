@@ -35,11 +35,11 @@ function tableReestrExport() {
     async function SearchRecordsReestr() {
         spinner('rowdatareestr');
         const searchRecord = await sendAjaxForm('../../handler_server/reestr_datatable.php', 'reestr_ofo', 'json');
-        if (searchRecord === 'false' ) {
-            document.querySelector('#rowdatareestr').innerHTML = searchRecord;
-        } else {
+        if (searchRecord.replace(/[^a-zа-яё]/gi, '') === 'false') {
             document.querySelector('#rowdatareestr').innerHTML = '';
             alert('Не введены данные');
+        } else {
+            document.querySelector('#rowdatareestr').innerHTML = searchRecord;
         }
         $('#btnSearchReestr').prop("disabled", false);
     }

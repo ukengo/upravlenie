@@ -69,12 +69,11 @@ function generatorReestrHTML($data)
         $html .= '<div class="col-md-2">';
 
         $html .= '<label for="up_sumispolreestr">Сума виконавцю</label>';
-        $html .= '<input type="number" id="up_sumispolreestr" ' . $row_number_reestr . ' value="' . +$row[16] . '" class="form-control form-control-sm"></div>';
-
+        $html .= '<input type="number" id="up_sumispolreestr" ' . $row_number_reestr . ' value="' .  str_replace(',', '.', preg_replace("/[^,.0-9]/", '', $row[16])) . '" class="form-control form-control-sm"></div>';
         $html .= '<div class="col-md-2">';
 
         $html .= '<label for="up_sumoplatareestr">Оплата виконавцю</label>';
-        $html .= '<input type="number" id="up_sumoplatareestr" ' . $row_number_reestr . ' value="' . +$row[17] . '" class="form-control form-control-sm"></div>';
+        $html .= '<input type="number" id="up_sumoplatareestr" ' . $row_number_reestr . ' value="' . str_replace(',', '.', preg_replace("/[^,.0-9]/", '', $row[17])) . '" class="form-control form-control-sm"></div>';
 
         $html .= '<div class="col-md-4">';
 
