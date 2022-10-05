@@ -19,22 +19,15 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
 {
     array_pop($dataForma);
 
-
-  //  echo !array_filter($dataForma);
-
-
-
-   // var_dump(($dataForma));
-
-
-
     if (!array_filter($dataForma) == 1) {
         return 'false';
     } else {
 
         $dataTableSlice = array_slice($dataTable, 1);
         $dataTableFilter = array_filter($dataTableSlice, fn ($x) => $x[5] != '');
-
+//echo '<pre>';
+//        var_dump($dataForma);
+  //      var_dump($dataTable[2967]);
         $returnRows = [];
 
         foreach ($dataTableFilter as $value) {
@@ -138,7 +131,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['ispolreestr']) {
-                if (strval(strtoupper($value[7])) == strtoupper($dataForma['ispolreestr'])) {
+                if (strval(strtoupper($value[15])) == strtoupper($dataForma['ispolreestr'])) {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -148,7 +141,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['sumispolreestr']) {
-                if ($value[8] == $dataForma['sumispolreestr']) {
+                if ($value[16] == $dataForma['sumispolreestr']) {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -158,7 +151,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['sumoplatareestr']) {
-                if ($value[9] == $dataForma['sumoplatareestr']) {
+                if ($value[17] == $dataForma['sumoplatareestr']) {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -168,7 +161,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['primreestr']) {
-                if (strval(strtoupper($value[10])) == strtoupper($dataForma['primreestr'])) {
+                if (strval(strtoupper($value[21])) == strtoupper($dataForma['primreestr'])) {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -178,7 +171,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['primmoyoreestr']) {
-                if (strval(strtoupper($value[11])) == strtoupper($dataForma['primmoyoreestr'])) {
+                if (strval(strtoupper($value[20])) == strtoupper($dataForma['primmoyoreestr'])) {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -188,7 +181,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['issuepartreestr']) {
-                if ($value[12] == $dataForma['issuepartreestr']) {
+                if ($value[23] == "TRUE" AND $dataForma['issuepartreestr'] == 'on') {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -198,7 +191,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['withoutaccountreestr']) {
-                if ($value[13] == $dataForma['withoutaccountreestr']) {
+                if ($value[22] == "TRUE" AND $dataForma['withoutaccountreestr'] == 'on') {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -208,7 +201,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['stoppedreestr']) {
-                if ($value[14] == $dataForma['stoppedreestr']) {
+                if ($value[18] == "TRUE" AND $dataForma['stoppedreestr'] == 'on') {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
