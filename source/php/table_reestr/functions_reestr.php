@@ -25,9 +25,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
 
         $dataTableSlice = array_slice($dataTable, 1);
         $dataTableFilter = array_filter($dataTableSlice, fn ($x) => $x[5] != '');
-//echo '<pre>';
-//        var_dump($dataForma);
-  //      var_dump($dataTable[2967]);
+
         $returnRows = [];
 
         foreach ($dataTableFilter as $value) {

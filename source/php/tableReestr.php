@@ -1,8 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/table_reestr/func_autoload_reestr.php';
 ?>
-
-<div class="container container-one">
+    
+<div class="container container-one" >
     <h5>Таблиця Реестр оформлень</h5>
 
     <div class="accordion" id="accordionFlushReestr">
@@ -24,7 +24,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . 'source/php/table_reestr/func_autoload_
     </div>
     <div class="row  mb-4 mt-2">
         <div class="col-md-8">
-
             <div class="btn-group my-1" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary btn-danger" id="btnSearchReestr">Search</button>
                 <button type="button" class="btn btn-primary btn-danger" id='btn-clear-records'>Clear Records</button>

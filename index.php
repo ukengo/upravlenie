@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
 
     <link rel="stylesheet" href="./style.css">
+    
 </head>
 
 <body>
@@ -42,6 +43,7 @@
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
     <script type="module" src="./main.js"></script>
+
 </body>
 
 </html>

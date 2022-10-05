@@ -15,16 +15,14 @@ function tableReestrExport() {
         $("#primreestr-datalist").empty();
         $("#primmoyoreestr-datalist").empty();
     } */
-
-
-
-
+    
     // cрабатывание по кнопке Enter
-    /*     function clickPressReestrSearch(event) {
-            if (event.keyCode == 13) {
-                SearchRecordsReestr()
-            }
-        } */
+    document.querySelector('#reestr_ofo').addEventListener('keydown', function(e) {
+        if (e.key == 'Enter') {
+            SearchRecordsReestr();
+        }
+      });
+
     /*     function clickPressReestrUpdate(event) {
             if (event.keyCode == 13) {
                 UpdateRecordReestr(parseInt(document.activeElement.id.replace(/[^\d]/g, '')))
@@ -42,11 +40,9 @@ function tableReestrExport() {
             document.querySelector('#rowdatareestr').innerHTML = searchRecord;
         }
         $('#btnSearchReestr').prop("disabled", false);
+    
     }
     //////////// конец отбора /////////////////////
-
-
-
 
 
 
@@ -278,7 +274,7 @@ function tableReestrExport() {
 
     // кнопка Clear Records
     document.querySelector('#btn-clear-records').addEventListener('click', ClearRecordReestr);
-
+    
     // открытие полной таблицы проекта по клику на кнопку
     $('#btnTable').click(btnTable);
 
@@ -357,7 +353,7 @@ function tableReestrExport() {
             google.script.run.withSuccessHandler(showDataReestr).getData2();
         });  */
 
-    /*         $('#clearBtnTable').click(function () {
+$('#clearBtnTable').click(function () {
             $('#clearBtnTable').prop("disabled", true);
             $('#div-data-table').remove();
             document.getElementById('btnSearchReestrInfo').innerHTML = '';
@@ -365,7 +361,7 @@ function tableReestrExport() {
             document.getElementById('btnSearchJobInfo').innerHTML = '';
             $('#clearBtnTable').prop("disabled", false);
         })  
-}*/
+
 
     // кнопка аккордеона
     $('#accordingButonReestr').click(accordingButon);

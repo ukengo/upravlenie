@@ -1,5 +1,5 @@
-<form id='reestr_ofo'>
-    <div class="row g-1 mt-1 form-background-color" onkeypress="clickPressReestrSearch(event)">
+<form id='reestr_ofo' onsubmit="event.preventDefault();" >
+    <div class="row g-1 mt-1 form-background-color">
         <div class="col-auto">
             <div class="form form-reestr">
                 <label for="dateendreestr">Дата кінець</label>
@@ -154,5 +154,4 @@
         </div>
         <input type="hidden" name="action" value="table_reestr">
     </div>
-
 </form>
