@@ -18,20 +18,23 @@ export const dataTableReestr = () => {
 
 export const sendAjaxForm = (url, formId, dataType) => {
     
-    return new Promise((resolve, reject) => {
+    let promiceSendAjaxForm = new Promise((resolve, reject) => {
         $.ajax({
             url: url, //url страницы (action_ajax_form.php)
             type: "POST", //метод отправки
           //  dataType: dataType, //формат данных
             data: $("#" + formId).serialize(),  // Сеарилизуем объект
             success: function (data) {
-                resolve(data);
+                resolve(data);                
             },
             error: function (error) {
                 reject(error);
             },
         });
+        
     });
+    return promiceSendAjaxForm;
+
 }
 
 /* $(document).ready(function () {

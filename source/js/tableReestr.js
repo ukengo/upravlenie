@@ -15,13 +15,13 @@ function tableReestrExport() {
         $("#primreestr-datalist").empty();
         $("#primmoyoreestr-datalist").empty();
     } */
-    
+
     // cрабатывание по кнопке Enter
-    document.querySelector('#reestr_ofo').addEventListener('keydown', function(e) {
+    document.querySelector('#reestr_ofo').addEventListener('keydown', function (e) {
         if (e.key == 'Enter') {
             SearchRecordsReestr();
         }
-      });
+    });
 
     /*     function clickPressReestrUpdate(event) {
             if (event.keyCode == 13) {
@@ -38,9 +38,14 @@ function tableReestrExport() {
             alert('Не введены данные');
         } else {
             document.querySelector('#rowdatareestr').innerHTML = searchRecord;
+            const btnUpdate = document.querySelectorAll('.btn-update_button_reestr');
+            const btnFinance = document.querySelectorAll('.btn_finance_button_reestr');
+            const btnClose = document.querySelectorAll('.btn_inance_button_reestr_close');
+            btnUpdate.forEach((el) => el.addEventListener('click', updateRecordReestr));
+            //btnFinance.forEach((el) => el.addEventListener('click', ));
+            //btnClose.forEach((el) => el.addEventListener('click', ));
         }
         $('#btnSearchReestr').prop("disabled", false);
-    
     }
     //////////// конец отбора /////////////////////
 
@@ -56,28 +61,36 @@ function tableReestrExport() {
         labelred();
     }
 
-    /*     function UpdateRecordReestr(row_number_reestr) {
-            document.getElementById("update_button_reestr" + row_number_reestr).disabled = true;
-            var dateendReestr = document.getElementById("up_dateendreestr" + row_number_reestr).value;
-            var datestartReestr = document.getElementById("up_datestartreestr" + row_number_reestr).value;
-            var firmaReestr = document.getElementById("up_firmareestr" + row_number_reestr).value;
-            var rabotaReestr = document.getElementById("up_rabotareestr" + row_number_reestr).value;
-            var coderabotaReestr = document.getElementById("up_coderabotareestr" + row_number_reestr).value;
-            var proektReestr = document.getElementById("up_proektreestr" + row_number_reestr).value;
-            var sotrReestr = document.getElementById("up_sotrreestr" + row_number_reestr).value;
-            var ispolReestr = document.getElementById("up_ispolreestr" + row_number_reestr).value;
-            var sumispolReestr = document.getElementById("up_sumispolreestr" + row_number_reestr).value;
-            var sumoplataReestr = document.getElementById("up_sumoplatareestr" + row_number_reestr).value;
-            var primReestr = document.getElementById("up_primreestr" + row_number_reestr).value;
-            var primMoyoReestr = document.getElementById("up_primmoyoreestr" + row_number_reestr).value;
-            var issuepartReestr = document.getElementById("up_issuepartreestr" + row_number_reestr).checked;
-            var withoutaccountReestr = document.getElementById("up_withoutaccountreestr" + row_number_reestr).checked;
-            var stoppedReestr = document.getElementById("up_stoppedreestr" + row_number_reestr).checked;
+
+    async function updateRecordReestr() {
+        this.disabled = true;
+        const dataRow = (this.getAttribute("data-row"));
+        const updateRecord = await sendAjaxForm('../../handler_server/reestr_datatable.php', 'search_records_reestr' + dataRow, 'json');
+        console.log(updateRecord);
+        this.disabled = false;
+
+
+
+        /*   var dateendReestr = document.getElementById("up_dateendreestr" + row_number_reestr).value;
+           var datestartReestr = document.getElementById("up_datestartreestr" + row_number_reestr).value;
+           var firmaReestr = document.getElementById("up_firmareestr" + row_number_reestr).value;
+           var rabotaReestr = document.getElementById("up_rabotareestr" + row_number_reestr).value;
+           var coderabotaReestr = document.getElementById("up_coderabotareestr" + row_number_reestr).value;
+           var proektReestr = document.getElementById("up_proektreestr" + row_number_reestr).value;
+           var sotrReestr = document.getElementById("up_sotrreestr" + row_number_reestr).value;
+           var ispolReestr = document.getElementById("up_ispolreestr" + row_number_reestr).value;
+           var sumispolReestr = document.getElementById("up_sumispolreestr" + row_number_reestr).value;
+           var sumoplataReestr = document.getElementById("up_sumoplatareestr" + row_number_reestr).value;
+           var primReestr = document.getElementById("up_primreestr" + row_number_reestr).value;
+           var primMoyoReestr = document.getElementById("up_primmoyoreestr" + row_number_reestr).value;
+           var issuepartReestr = document.getElementById("up_issuepartreestr" + row_number_reestr).checked;
+           var withoutaccountReestr = document.getElementById("up_withoutaccountreestr" + row_number_reestr).checked;
+           var stoppedReestr = document.getElementById("up_stoppedreestr" + row_number_reestr).checked;
     
-            google.script.run.withSuccessHandler(function (return_string) {
-                document.getElementById("update_button_reestr" + row_number_reestr).disabled = false;
-            }).UpdateRecordReestrGs(dateendReestr, datestartReestr, firmaReestr, rabotaReestr, coderabotaReestr, proektReestr, sotrReestr, ispolReestr, sumispolReestr, sumoplataReestr, primReestr, primMoyoReestr, issuepartReestr, withoutaccountReestr, stoppedReestr);
-        } */
+           google.script.run.withSuccessHandler(function (return_string) {
+               document.getElementById("update_button_reestr" + row_number_reestr).disabled = false;
+           }).UpdateRecordReestrGs(dateendReestr, datestartReestr, firmaReestr, rabotaReestr, coderabotaReestr, proektReestr, sotrReestr, ispolReestr, sumispolReestr, sumoplataReestr, primReestr, primMoyoReestr, issuepartReestr, withoutaccountReestr, stoppedReestr); */
+    }
 
     /*     function FinanceRecordReestr(row_number_reestr) {
             document.getElementById("finance_button_reestr" + row_number_reestr).disabled = true;
@@ -109,7 +122,7 @@ function tableReestrExport() {
             }
         } */
 
-
+    btnTable();
     // нажатие кнопки Table
     function btnTable() {
         if ($('.dataTables_filter input').length) { // проверка на наличие селектора
@@ -123,7 +136,7 @@ function tableReestrExport() {
         spinner('div-data-table-spinner');
         showData();
     }
-
+   
     function showData() {
         dataTableReestr()
             .then((dataArray) => {
@@ -274,7 +287,7 @@ function tableReestrExport() {
 
     // кнопка Clear Records
     document.querySelector('#btn-clear-records').addEventListener('click', ClearRecordReestr);
-    
+
     // открытие полной таблицы проекта по клику на кнопку
     $('#btnTable').click(btnTable);
 
@@ -353,14 +366,14 @@ function tableReestrExport() {
             google.script.run.withSuccessHandler(showDataReestr).getData2();
         });  */
 
-$('#clearBtnTable').click(function () {
-            $('#clearBtnTable').prop("disabled", true);
-            $('#div-data-table').remove();
-            document.getElementById('btnSearchReestrInfo').innerHTML = '';
-            document.getElementById('btnSearchFinInfo').innerHTML = '';
-            document.getElementById('btnSearchJobInfo').innerHTML = '';
-            $('#clearBtnTable').prop("disabled", false);
-        })  
+    $('#clearBtnTable').click(function () {
+        $('#clearBtnTable').prop("disabled", true);
+        $('#div-data-table').remove();
+        document.getElementById('btnSearchReestrInfo').innerHTML = '';
+        document.getElementById('btnSearchFinInfo').innerHTML = '';
+        document.getElementById('btnSearchJobInfo').innerHTML = '';
+        $('#clearBtnTable').prop("disabled", false);
+    })
 
 
     // кнопка аккордеона
@@ -372,7 +385,9 @@ $('#clearBtnTable').click(function () {
             $('#accordingButonReestr').text('Cвернуть форму');
         };
     };
-
     accordingButon();
+
+    //кнопка Update результатов поиска
+
 }
 export default tableReestrExport;

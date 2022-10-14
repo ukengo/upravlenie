@@ -179,7 +179,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['issuepartreestr']) {
-                if ($value[23] == "TRUE" AND $dataForma['issuepartreestr'] == 'on') {
+                if ($value[23] == "TRUE" and $dataForma['issuepartreestr'] == 'on') {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -189,7 +189,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['withoutaccountreestr']) {
-                if ($value[22] == "TRUE" AND $dataForma['withoutaccountreestr'] == 'on') {
+                if ($value[22] == "TRUE" and $dataForma['withoutaccountreestr'] == 'on') {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -199,7 +199,7 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
             }
 
             if ($dataForma['stoppedreestr']) {
-                if ($value[18] == "TRUE" AND $dataForma['stoppedreestr'] == 'on') {
+                if ($value[18] == "TRUE" and $dataForma['stoppedreestr'] == 'on') {
                     array_push($evalRows, 'yes');
                 } else {
                     array_push($evalRows, 'no');
@@ -217,3 +217,58 @@ function SearchRecordsReestrPhp($dataTable, $dataForma)
     }
 }
 // конец SearchRecordsReestrPhp()
+
+function updateReestr()
+{
+    //Обновление содержимого листа
+    $proektForma = $_POST['up_proektreestr'];
+    global $service;
+    $options = array('valueInputOption' => 'USER_ENTERED');
+
+    // вставка в Управление
+    global $responseRangeUpravlenieBaseProekt;
+    global $IdUpravlenie;
+    $arrayUpravlenie = $responseRangeUpravlenieBaseProekt['values'];
+    $rowUpravlenie = searchRow($proektForma, $arrayUpravlenie);
+    $rangeUpravlenie = 'База!A' . $rowUpravlenie . ':G' . $rowUpravlenie;
+    $valuesUpravlenie = [array_values(array_slice($_POST, 0, 7))];
+    $valuesUpravlenie[0][0] = $valuesUpravlenie[0][0] ? date('d.m.Y', strtotime($valuesUpravlenie[0][0])) : '';
+    $valuesUpravlenie[0][1] = $valuesUpravlenie[0][1] ? date('d.m.Y', strtotime($valuesUpravlenie[0][1])) : '';
+    $bodyUpravlenie = new Google_Service_Sheets_ValueRange(['values' => $valuesUpravlenie]);
+    $service->spreadsheets_values->update($IdUpravlenie, $rangeUpravlenie, $bodyUpravlenie, $options);
+
+    // вставка в Реестр
+    global $responseRangeReestrBaseProekt;
+    global $IdReestr;
+    $arrayReestr = $responseRangeReestrBaseProekt['values'];
+    $rowReestr = searchRow($proektForma, $arrayReestr);
+    
+    $rangeReestrIspol = 'База!P' . $rowReestr . ':R' . $rowReestr;
+    $valuesReestrIspol = [array_values(array_slice($_POST, 7, 3))];
+    
+    $rangeReestrPrim = 'База!U' . $rowReestr . ':V' . $rowReestr;
+    $valuesReestrPrim = [array_reverse(array_values(array_slice($_POST, 10, 2)))];
+    
+    $rangeReestrCheckboxSf = 'База!W' . $rowReestr . ':X' . $rowReestr;
+    $valuesReestrCheckboxSf = [array_reverse(array_values(array_slice($_POST, 12, 2)))];
+
+    $rangeReestrCheckboxStop = 'База!S' . $rowReestr;
+    $valuesReestrCheckboxStop = [array_reverse(array_values(array_slice($_POST, 13, 1)))];
+
+    $valuesReestrIspol[0][1] = str_replace(',', '.', preg_replace("/[^,.0-9]/", '', $valuesReestrIspol[0][1]));
+    $valuesReestrIspol[0][2] = str_replace(',', '.', preg_replace("/[^,.0-9]/", '', $valuesReestrIspol[0][2]));
+    
+    $valuesReestrCheckboxSf[0][0] = $valuesReestrCheckboxSf[0][0] ? '=TRUE()' : '=FALSE()';
+    $valuesReestrCheckboxSf[0][1] = $valuesReestrCheckboxSf[0][1] ? '=TRUE()' : '=FALSE()';
+    $valuesReestrCheckboxStop[0][0] = $valuesReestrCheckboxStop[0][0] ? '=TRUE()' : '=FALSE()';
+    
+    $bodyReestrIspol = new Google_Service_Sheets_ValueRange(['values' => $valuesReestrIspol]);
+    $bodyReestrPrim = new Google_Service_Sheets_ValueRange(['values' => $valuesReestrPrim]);
+    $bodyReestrCheckboxSf = new Google_Service_Sheets_ValueRange(['values' => $valuesReestrCheckboxSf]);
+    $bodyReestrCheckboxStop = new Google_Service_Sheets_ValueRange(['values' => $valuesReestrCheckboxStop]);
+    
+    $service->spreadsheets_values->update($IdReestr, $rangeReestrIspol, $bodyReestrIspol, $options);
+    $service->spreadsheets_values->update($IdReestr, $rangeReestrPrim, $bodyReestrPrim, $options);
+    $service->spreadsheets_values->update($IdReestr, $rangeReestrCheckboxSf, $bodyReestrCheckboxSf, $options);
+    $service->spreadsheets_values->update($IdReestr, $rangeReestrCheckboxStop, $bodyReestrCheckboxStop, $options);
+}

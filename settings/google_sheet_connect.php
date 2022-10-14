@@ -1,4 +1,3 @@
-
 <?php
 
 // Подключаем клиент Google таблиц
@@ -29,10 +28,6 @@ $client->addScope('https://www.googleapis.com/auth/spreadsheets');
 
 //$response = $service->spreadsheets_values->get($spreadsheetId, $range);
 //echo (json_encode($response['values']));
-
-
-
-
 
 
 //var_dump($_POST);
